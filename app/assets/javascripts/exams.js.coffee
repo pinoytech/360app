@@ -18,7 +18,7 @@ ready = ->
         questions = []
       else
         questions = selected_questions.split(',')
-      ques_id = $(this).data('ques_id')  
+      ques_id = $(this).data('ques_id')          
       added = false
       $.map(questions, (el, i)->
         if (el.toString() == ques_id.toString()) 
@@ -27,7 +27,14 @@ ready = ->
       if added == false
         questions.push(ques_id.toString())
       q = questions.join(',')
-      $('#selected_questions').val(q) 
+      $('#selected_questions').val(q)       
+
+
+      list_group = $(this).children('.list-group-item')
+      if list_group.hasClass('selected')
+        list_group.removeClass('selected');
+      else
+        list_group.addClass('selected');
     )
 
   $('.selected-question-list .question').on('click', ->
@@ -42,11 +49,17 @@ ready = ->
         if (el.toString() == ques_id.toString()) 
           added = true;
       )
-      if added == false
-        console.log questions.indexOf(ques_id.toString())
+      if added == true
         questions.splice(questions.indexOf(ques_id.toString()),1)
       q = questions.join(',')
       $('#selected_questions').val(q) 
+
+      list_group = $(this).children('.list-group-item')
+      if list_group.hasClass('selected')
+        list_group.removeClass('selected');
+      else
+        list_group.addClass('selected');
+
     )
 
 $(document).on 'ready page:load', ready

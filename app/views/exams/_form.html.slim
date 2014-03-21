@@ -6,28 +6,22 @@
       .panel-body
         .row        
           .col-sm-12
-            .col-sm-6
-              .panel.panel-default
-                .panel-heading
-                  h3.panel-title Categories
-                .panel-body 
+            .panel.panel-default
+              .panel-heading
+                h3.panel-title Exam
+              .panel-body              
+                .form-group
+                  = f.label :name
+                  = f.text_field :name, placeholder: 'Title', class: 'form-control'
+                .form-group
+                  = f.label :description
+                  = f.text_area :description, rows: '4', placeholder: 'Description', class: 'form-control'
+                .form-group
+                  = label_tag 'Categories'
                   = select_tag 'category_selection', options_from_collection_for_select(Category.all, :id, :name), :prompt => 'All Categories', class: 'form-control'
-                  br
-                  = f.label Season.open.first.name if Season.open.first.present?
-
+                .form-group
+                  = f.label "Cycle: #{Season.open.first.name}" if Season.open.first.present?
                   = f.hidden_field 'season_id', value: Season.open.first.id if Season.open.first.present?
-
-            .col-sm-6
-              .panel.panel-default
-                .panel-heading
-                  h3.panel-title Exam
-                .panel-body              
-                  .form-group
-                    = f.label :name
-                    = f.text_field :name, placeholder: 'Title', class: 'form-control'
-                  .form-group
-                    = f.label :description
-                    = f.text_area :description, rows: '4', placeholder: 'Description', class: 'form-control'
         .row
           hr
         .row

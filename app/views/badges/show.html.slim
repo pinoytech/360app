@@ -1,10 +1,13 @@
 .container
   .row
     =render 'sidebar'
-    .col-xs-12.col-sm-9
-      .media
-        = link_to @badge, class: 'pull-left' do
-          = image_tag @badge.image.url(:small)
-        .media-body
-          h4.media-heading= @badge.name
-          p= @badge.description
+    .col-sm-9
+      .panel.panel-info
+        .row
+          .media
+            .media-heading
+              = link_to @badge, class: 'pull-left' do
+                = image_tag @badge.image.url(:small)
+            .media-body
+              h4.media-heading= @badge.name
+              p= @badge.description

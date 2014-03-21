@@ -2,7 +2,7 @@
   .row
     =render 'sidebar'
     .col-sm-9
-      .panel.panel-default
+      .panel.panel-info
         .panel-heading
           h3.panel-title Report
         .panel-body  
@@ -22,6 +22,9 @@ javascript:
     },
     tooltip: {
       pointFormat: "{series.name}: <b>{point.percentage:.1f}%</b>"
+    },
+    credits: {
+      enabled: false
     },
     plotOptions: {
       pie: {
