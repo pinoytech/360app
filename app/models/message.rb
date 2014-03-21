@@ -4,4 +4,7 @@ class Message < ActiveRecord::Base
 
   scope :public,  -> { where('messages.share=?', true) }
   scope :personal, -> { where('messages.share=?', false) }
+  belongs_to :badge
+
+  default_scope { order('created_at DESC') }
 end

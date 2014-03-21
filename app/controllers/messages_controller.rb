@@ -4,10 +4,12 @@ class MessagesController < ApplicationController
     @public_messages = Message.public
     @private_messages = current_user.messages.personal
     @message = Message.new
+    @badges = Badge.all
   end
 
   def new
     @message = Message.new
+    @badges = Badge.all
   end
 
   def create
@@ -22,14 +24,18 @@ class MessagesController < ApplicationController
   end
 
   def search_users
-    users = []
-    results = User.search params[:term]
-    users << results.map{|u| {id: u.id, name: u.full_name, email: u.email}}.uniq
-    render json: { data: users.flatten }
+    users = User.search params[:term]
+    respond_to do |format|
+      format.json {
+        render :json => {
+          :users => users
+        }
+      }
+    end
   end
 
   private
   def strong_params
-    params.require(:message).permit(:title, :body, :user_id, :from_id, :share)
+    params.require(:message).permit(:title, :body, :user_id, :from_id, :share, :badge_id)
   end
 end

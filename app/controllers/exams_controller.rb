@@ -8,8 +8,10 @@ class ExamsController < ApplicationController
   end
 
   def new
-    @exams = Exam.new
-        
+    @exam = Exam.new
+    @categories = Category.all
+    @questions = Question.all
+
     respond_to do |format|
       format.html
     end
@@ -20,5 +22,15 @@ class ExamsController < ApplicationController
     respond_to do |format|
       format.html
     end
+  end
+
+  def category_questions
+    if params[:category_id].present?
+      @category = Category.find params[:category_id]
+      @questions = @category.questions
+    else
+      @questions = Question.all
+    end
+    
   end
 end

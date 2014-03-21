@@ -13,7 +13,15 @@ class User < ActiveRecord::Base
   end
 
   def self.search(term)
-    str = "%#{term}%"
-    where('first_name LIKE ? OR last_name LIKE ? OR email LIKE ?', str, str, str)
+    str = "%#{term.downcase}%"
+    where('LOWER(first_name) LIKE ? OR LOWER(last_name) LIKE ? OR LOWER(email) LIKE ? AND LOWER(first_name) IS NOT NULL', str, str, str)
+  end
+
+  def message_badges_size
+    self.messages.count(:badge_id)
+  end
+
+  def message_badges
+    self.messages.joins(:badge)
   end
 end
