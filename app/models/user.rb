@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
       :small => "200x200>",
       :thumb => "100x100>"
     },
-    :default_url => "/images/:style/missing.png"
+    :default_url => "/avatar/:style/missing.png"
   validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
 
   has_many :messages
@@ -17,6 +17,7 @@ class User < ActiveRecord::Base
   has_many :exams_users
   has_many :exams, through: :exams_users
   has_many :ratees, through: :exams_users, foreign_key: :ratee_id, source: :ratee, class_name: 'User'
+  belongs_to :account
 
   accepts_nested_attributes_for :ratees
   accepts_nested_attributes_for :exams

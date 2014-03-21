@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
+
   def index
-    @users = User.all
+    @account = current_user.account
+    @users = @account.users
     respond_to do |format|
       format.html
     end
@@ -16,23 +18,23 @@ class UsersController < ApplicationController
   def assign_exam
     @user = User.find params[:id]
     @exams = Season.active_exams
+    @exams_user = ExamsUser.new
   end
 
   def save_exam
-    @user = User.find params[:id]
-    redirect_to users_path
+    @exams_user = ExamsUser.new(exams_user_params)
+    respond_to do |format|
+      if @exams_user.save
+        format.html { redirect_to users_path, notice: 'Exam was successfully assigned.' }
+      else
+        format.html { render action: 'assign_exam' }
+      end
+    end
   end
 
   private
-  def strong_params
-    params.require(:user).permit(
-      {
-          exams_attributes: [
-              :exam_id
-          ],
-          ratees_attributes: [
-              :ratee_id
-          ]
-      })
+  
+  def exams_user_params
+    params.require(:exams_user).permit(:user_id, :exam_id, :ratee_id)
   end
 end
