@@ -20,7 +20,8 @@ Hackathon2014::Application.routes.draw do
   resources :questions
   resources :accounts do
     member do
-      get :assign_user
+      get   :assign_user
+      post  :delete_account
     end
   end
   resources :categories

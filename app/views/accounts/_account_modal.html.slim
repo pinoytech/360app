@@ -1,0 +1,26 @@
+#accModal.modal.fade
+  .modal-dialog
+    .modal-content
+      .modal-header
+        button.close aria-hidden="true" data-dismiss="modal" type="button"  &times;
+        h4.modal-title Add a company
+      = form_for @account, html: {role: 'form'} do |f|
+        .modal-body
+          .form-group
+            = f.label :name
+            = f.text_field :name, placeholder: 'Company Name', required: true, class: 'form-control'
+          .form-group
+            = f.label :description
+            = f.text_area :description, rows: '4', placeholder: 'Description', required: true, class: 'form-control'
+          .form-group
+            = f.label :email
+            = f.email_field :email, placeholder: 'Email', required: true, class: 'form-control'
+          .form-group
+            = f.label :address
+            = f.text_field :address, placeholder: 'Address', required: true, class: 'form-control'
+          .form-group
+            = f.label :contact
+            = f.text_field :telephone, placeholder: 'Contact Nos', required: true, class: 'form-control'
+        .modal-footer
+          button.btn.btn-default data-dismiss="modal" type="button"  Close
+          =f.submit 'Send', class: 'btn btn-primary btn-message'

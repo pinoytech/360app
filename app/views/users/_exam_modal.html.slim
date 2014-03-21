@@ -4,7 +4,7 @@
       .modal-header
         button.close aria-hidden="true" data-dismiss="modal" type="button"  &times;
         h4.modal-title Assign Exam
-      = form_for @exams_user, url: save_exam_user_path, html: {role: 'form', method: 'post'} do |f|
+      = form_for @exams_user, url: save_exam_user_path, html: {role: 'form', method: 'post', remote: true} do |f|
         .modal-body
           .form-group
             strong Choose your Ratee
@@ -15,11 +15,11 @@
                 span.select2-arrow
                   b
               input#user_autogen.select2-focusser.select2-offscreen tabindex="0" type="text"
-              =f.hidden_field :ratee_id
+              =f.hidden_field :ratee_id, "required" => "required"
               =f.hidden_field :user_id, value: @user.id
           .form-group
             strong Choose Exam
-            = f.select :exam_id, options_from_collection_for_select(@exams, 'id', 'name'), {}, class: 'form-control'
+            = f.select :exam_id, options_from_collection_for_select(@exams, 'id', 'name'), {}, class: 'form-control', "required" => "required"
         .modal-footer
           button.btn.btn-default data-dismiss="modal" type="button"  Close
           =f.submit 'Assign', class: 'btn btn-primary btn-message'
