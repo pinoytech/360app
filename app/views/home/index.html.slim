@@ -1,2 +1,4 @@
-- unless current_user
-  = render 'devise/registrations/form'
+.container
+	- unless current_user
+		.row
+  		= render 'devise/registrations/form'
