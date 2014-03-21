@@ -39,29 +39,29 @@
                               - if question.kind == 'Multiple Choice' || question.kind == 'multiple choice'
                                 .answers-container.row
                                   .col-md-1
-                                    = f.radio_button :answer, 1, multiple: true
+                                    = f.radio_button "answer_#{index}".to_sym, 1
                                     | &nbsp;
                                     = f.label '1'
                                   .col-md-1
-                                    = f.radio_button :answer, 2, multiple: true
+                                    = f.radio_button "answer_#{index}".to_sym, 2
                                     | &nbsp;
                                     = f.label '2'
                                   .col-md-1
-                                    = f.radio_button :answer, 3, multiple: true
+                                    = f.radio_button "answer_#{index}".to_sym, 3
                                     | &nbsp;
                                     = f.label '3'
                                   .col-md-1
-                                    = f.radio_button :answer, 4, multiple: true
+                                    = f.radio_button "answer_#{index}".to_sym, 4
                                     | &nbsp;
                                     = f.label '4'
                                   .col-md-1
-                                    = f.radio_button :answer, 5, multiple: true
+                                    = f.radio_button "answer_#{index}".to_sym, 5
                                     | &nbsp;
                                     = f.label '5'
                               - if question.kind == 'Simple' || question.kind == 'simple'
                                 .answers-container.row
                                   .col-sm-12
-                                    = f.text_area :answer, multiple: true, class: 'form-control'
+                                    = f.text_area "answer_#{index}".to_sym, class: 'form-control'
             .row
               hr
             .row
