@@ -6,7 +6,9 @@
         .panel-heading
           h3.panel-title Application Settings
         .panel-body
-          = link_to 'Badges', badges_path, class: 'btn btn-primary'
+          ul.list-unstyled.list-inline
+            li= link_to 'Badges', badges_path, class: 'btn btn-primary'
+            li= link_to 'Seasons', seasons_path, class: 'btn btn-primary'
       .panel.panel-default
         .panel-heading
           h3.panel-title Feedback Management

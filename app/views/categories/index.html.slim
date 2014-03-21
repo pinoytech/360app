@@ -9,9 +9,9 @@
           p= link_to 'Add a Category', new_category_path, class: 'btn btn-primary'
           .list-group
             - @categories.each do |cat|
-                .list-group-item
-                  h4.list-group-item-heading= cat.name
-                  p.list-group-item-text= cat.description
-                  p.list-group-item-text
-                    = link_to 'Edit', edit_category_path(cat), class: 'btn btn-success'
-                    = link_to 'Remove', cat, method: :delete, class: 'btn btn-danger'
+              .list-group-item
+                h4.list-group-item-heading= cat.name
+                p.list-group-item-text= cat.description
+                p.list-group-item-text
+                  = link_to 'Edit', edit_category_path(cat), class: 'btn btn-success'
+                  = link_to 'Remove', cat, method: :delete, class: 'btn btn-danger'

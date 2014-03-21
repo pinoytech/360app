@@ -5,9 +5,13 @@ Hackathon2014::Application.routes.draw do
   resources :questions
   resources :categories
   resources :exams
-  resources :messages
+  resources :seasons
 
-  resources :messages
+  resources :messages do
+    collection do
+      get :search_users
+    end
+  end
   resources :badges
   match 'dashboard' => 'home#dashboard', via: :get
   match '/admin/dashboard' => 'admin#index', via: :get

@@ -22,8 +22,10 @@ class MessagesController < ApplicationController
   end
 
   def search_users
-    user = User.search params[:term]
-    render json: { data: user }
+    users = []
+    results = User.search params[:term]
+    users << results.map{|u| {id: u.id, name: u.full_name, email: u.email}}.uniq
+    render json: { data: users.flatten }
   end
 
   private

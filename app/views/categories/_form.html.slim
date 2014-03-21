@@ -1,0 +1,12 @@
+= form_for @category, html: {role: 'form'} do |f|
+  .form-group
+    = f.label :name
+    = f.text_field :name, placeholder: 'Title', class: 'form-control'
+  .form-group
+    = f.label :description
+    = f.text_area :description, rows: '4', placeholder: 'Description', class: 'form-control'
+  .form-group
+    ul.list-unstyled.list-inline
+      li= f.submit 'Update', class: 'btn btn-primary' if params[:action].eql?('edit')
+      li= f.submit 'Add', class: 'btn btn-primary' if params[:action].eql?('new')
+      li= link_to 'Back', categories_path, class: 'btn btn-default'
