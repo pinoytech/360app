@@ -23,7 +23,7 @@ Hackathon2014::Application.routes.draw do
       get :category_questions
       get :select_questions
       get :remove_questions
-      get :question_list 
+      get :question_list
     end
   end
   resources :seasons
@@ -38,4 +38,12 @@ Hackathon2014::Application.routes.draw do
   resources :reports
   match 'dashboard' => 'home#dashboard', via: :get
   match '/admin/dashboard' => 'admin#index', via: :get
+
+  resources :exams_users do
+    collection do
+      get :responses
+      post :create_response
+    end
+  end
+
 end
