@@ -1,0 +1,66 @@
+#response-form-container.container
+  .row
+    = render 'sidebar'
+    = form_for @response, html: {role: 'form'} do |f|
+      = f.hidden_field :exams_user_id
+      .col-xs-12.col-sm-9
+        .panel.panel-info
+          .panel-heading
+            h3.panel-title Create Feedback
+          .panel-body
+            .row
+              .col-sm-12
+
+                - if @response.errors.any?
+                  #error_explanation
+                    .alert.alert-danger
+                      | The form contains #{pluralize(@response.errors.count, "error")}.
+                    ul
+                      - @response.errors.full_messages.each do |msg|
+                        li
+                          | * #{msg}
+
+                h4
+                  = "Exam Name: #{@exams_user.exam.name}"
+                hr
+                .row
+                  .col-sm-12
+                    .question Questions
+                    .questions-container.row
+                      .col-sm-12
+                        - @exams_user.exam.questions.each_with_index do |question, index|
+                          .form-group
+                            = "#{index + 1}. #{question.title}"
+                            - if question.kind == 'Multiple Choice' || question.kind == 'multiple choice'
+                              .answers-container.row
+                                .col-md-1
+                                  = f.radio_button :answer, 1, multiple: true
+                                  | &nbsp;
+                                  = f.label '1'
+                                .col-md-1
+                                  = f.radio_button :answer, 2, multiple: true
+                                  | &nbsp;
+                                  = f.label '2'
+                                .col-md-1
+                                  = f.radio_button :answer, 3, multiple: true
+                                  | &nbsp;
+                                  = f.label '3'
+                                .col-md-1
+                                  = f.radio_button :answer, 4, multiple: true
+                                  | &nbsp;
+                                  = f.label '4'
+                                .col-md-1
+                                  = f.radio_button :answer, 5, multiple: true
+                                  | &nbsp;
+                                  = f.label '5'
+                            - if question.kind == 'Simple' || question.kind == 'simple'
+                              .answers-container.row
+                                .col-sm-12
+                                  = f.text_area :answer, multiple: true, class: 'form-control'
+            .row
+              hr
+            .row
+              .col-sm-12
+                = f.submit 'Submit', class: 'btn btn-success'
+
+
