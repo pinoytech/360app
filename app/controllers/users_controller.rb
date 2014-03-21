@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
   def index
-    #@account = current_user.account
+    @account = current_user.account
     @users = @account.users
     respond_to do |format|
       format.html
