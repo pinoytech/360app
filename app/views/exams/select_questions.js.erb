@@ -1,0 +1,47 @@
+$(".question-list").html("<%= j(render partial: 'exams/questions.html.slim')%>")
+$(".selected-question-list").html("<%= j(render partial: 'exams/selected_questions.html.slim')%>")
+
+$('.question-list .question').on('click', function() {
+  var added, q, ques_id, questions, selected_questions;
+  selected_questions = $("#selected_questions").val();
+  if (selected_questions.length === 0) {
+    questions = [];
+  } else {
+    questions = selected_questions.split(',');
+  }
+  ques_id = $(this).data('ques_id');
+  added = false;
+  $.map(questions, function(el, i) {
+    if (el.toString() === ques_id.toString()) {
+      return added = true;
+    }
+  });
+  if (added === false) {
+    questions.push(ques_id.toString());
+  }
+  q = questions.join(',');
+  return $('#selected_questions').val(q);
+});
+
+$('.selected-question-list .question').on('click', function() {
+  var added, q, ques_id, questions, selected_questions;
+  selected_questions = $("#selected_questions").val();
+  if (selected_questions.length === 0) {
+    questions = [];
+  } else {
+    questions = selected_questions.split(',');
+  }
+  ques_id = $(this).data('ques_id');
+  added = false;
+  $.map(questions, function(el, i) {
+    if (el.toString() === ques_id.toString()) {
+      return added = true;
+    }
+  });
+  if (added === true) {
+    questions.splice(questions.indexOf(ques_id.toString()), 1);
+  }
+  q = questions.join(',');
+  return $('#selected_questions').val(q);
+});
+

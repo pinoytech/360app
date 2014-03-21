@@ -1,0 +1,6 @@
+- if @selected_questions.present?
+  - @selected_questions.each do |ques|
+    .question data-ques_id="#{ques.id}"
+      .list-group-item
+        h4.list-group-item-heading= ques.title
+        p.list-group-item-text= ques.description
