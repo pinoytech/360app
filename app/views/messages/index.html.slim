@@ -19,7 +19,7 @@
                   li >>
                   li=message.receiver.full_name
                   li=privacy_text(message)
-                  li=time_ago_in_words(message.created_at)
+                  li=" ago".prepend(time_ago_in_words(message.created_at))
             - if @private_messages.any?
               - @private_messages.each do |message|
                 .well
@@ -30,6 +30,6 @@
                     li >>
                     li=message.receiver.full_name
                     li=privacy_text(message)
-                    li=time_ago_in_words(message.created_at)
+                    li=" ago".prepend(time_ago_in_words(message.created_at))
 = render 'new_modal'
 
