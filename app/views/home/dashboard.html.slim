@@ -13,9 +13,9 @@
         .panel-body
           - if current_user.badges.any?
             | You currently have
-            = " {pluralize(current_user.badges.size, 'badge')}"
+            = " #{pluralize(current_user.badges.size, 'badge')}"
             - current_user.badges.each do |badge|
-              = image_tag badge.url(:thumb), class: 'img-responsive'
+              = image_tag badge.image.url(:thumb), class: 'img-responsive'
       .panel.panel-default
         .panel-heading
           h3.panel-title Notifications
