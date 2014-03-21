@@ -5,7 +5,7 @@ class Exam < ActiveRecord::Base
   has_many :users, through: :exams_users
   has_many :exams_users
 
-  def exam_completed
-    
-  end
+  scope :completed, -> {where("exams_users.complete=?", true)}
+  scope :incomplete, -> {where("exams_users.complete=?", false)}
+
 end
