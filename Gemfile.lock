@@ -104,7 +104,6 @@ GEM
       method_source (~> 0.8)
       slop (~> 3.4)
     rack (1.5.2)
-    rack-offline (0.6.4)
     rack-test (0.6.2)
       rack (>= 1.0)
     rails (4.0.4)
@@ -178,7 +177,6 @@ DEPENDENCIES
   omniauth-google-oauth2
   paperclip (~> 4.1)
   pry
-  rack-offline
   rails (= 4.0.4)
   sass-rails (~> 4.0.2)
   sdoc

@@ -35,6 +35,7 @@ Hackathon2014::Application.routes.draw do
 
   resources :feedbacks
   resources :badges
+  resources :reports
   match 'dashboard' => 'home#dashboard', via: :get
   match '/admin/dashboard' => 'admin#index', via: :get
 end
