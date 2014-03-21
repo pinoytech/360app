@@ -41,7 +41,7 @@ class MessagesController < ApplicationController
   def get_messages
     messages = []
     messages << Message.public
-    messages << Message.personal
+    messages << current_user.messages.personal
     messages << current_user.personal_messages
     return messages.flatten.uniq
   end
