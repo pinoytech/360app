@@ -26,13 +26,6 @@ class ExamsController < ApplicationController
     end
   end
 
-  def question_list
-    @questions = Question.all
-    respond_to do |format|
-      format.json
-    end  
-  end
-
   def create
     questions = Question.where(id: params[:selected_questions].split(','))
     @exam = Exam.new(allowed_params)

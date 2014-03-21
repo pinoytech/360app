@@ -40,6 +40,7 @@ class UsersController < ApplicationController
   end
 
   private
+  
   def exams_user_params
     params.require(:exams_user).permit(:user_id, :exam_id, :ratee_id)
   end

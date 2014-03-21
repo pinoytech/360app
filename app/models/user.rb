@@ -22,6 +22,10 @@ class User < ActiveRecord::Base
   accepts_nested_attributes_for :ratees
   accepts_nested_attributes_for :exams
 
+  def self.admin
+    where(admin: true)
+  end
+
   def full_name
     [first_name, last_name].select{|x| x.present?}.join(' ')
   end
