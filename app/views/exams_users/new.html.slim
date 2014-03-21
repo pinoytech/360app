@@ -1,0 +1,53 @@
+.container
+  .row
+    = render 'sidebar'
+   	= form_for @exams_user, html: {role: 'form'} do |f|
+   	  = f.hidden_field :exam_id
+      .col-xs-12.col-sm-9
+        .panel.panel-default
+          .panel-heading
+            h3.panel-title Create Feedback
+          .panel-body
+            .row
+              .col-sm-12
+                strong Exam Name:&nbsp;
+                = @exam.name
+                br
+                br
+                .row
+                  .col-sm-12
+                    strong Questions
+                    .row
+                      .col-sm-12
+                        - @exam.questions.each do |question|
+                          br
+                          = question.title
+                          = f.fields_for :responses do |c|
+                            - if question.type == 'Multiple Choice'
+                              .row
+                                .col-sm-1
+                                  = c.radio_button :answer, 1
+                                  | &nbsp;1
+                                .col-sm-1
+                                  = c.radio_button :answer, 2
+                                  | &nbsp;2
+                                .col-sm-1
+                                  = c.radio_button :answer, 3
+                                  | &nbsp;3
+                                .col-sm-1
+                                  = c.radio_button :answer, 4
+                                  | &nbsp;4
+                                .col-sm-1
+                                  = c.radio_button :answer, 5
+                                  | &nbsp;5
+                            - if question.type == 'Simple'
+                              .row
+                                .col-sm-12
+                                  = c.text_area :answer
+            .row
+              hr
+            .row
+              .col-sm-12
+                = f.submit 'Submit', class: 'btn btn-success'
+
+
