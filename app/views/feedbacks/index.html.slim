@@ -6,7 +6,12 @@
         .panel-heading
           h3.panel-title Feedback You Provided
         .panel-body
-          p You have not provided any feedback yet.
+          -if @provided_feedbacks.any?
+            ul
+              - @provided_feedbacks.each do |feedback|
+                li=link_to feedback.exam.name, feedback
+          - else
+            p You have not provided any feedback yet.
       .panel.panel-info
         .panel-heading
           h3.panel-title Feedback for You
@@ -17,8 +22,9 @@
           h3.panel-title Pending Feedback
         .panel-body
           - if @pending_feedback.any?
-            - @pending_feedback.each do |feedback|
-              li= link_to feedback.exam.name, '#'
+            ul
+              - @pending_feedback.each do |feedback|
+                li= link_to feedback.exam.name, '#'
           - else
             p You have no pending feedback.
 

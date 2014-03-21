@@ -47,6 +47,9 @@ javascript:
     popOver.tooltip();
      $("#user_select").select2({
          placeholder: "Search a user...",
+         formatInputTooShort: function () {
+           return "Search by name or email...";
+         },
          minimumInputLength: 1,
          ajax: {
              url: "/messages/search_users",

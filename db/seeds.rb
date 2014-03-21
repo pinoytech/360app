@@ -32,19 +32,23 @@ User.create(first_name: 'Migz',
            last_name: 'Suelto',
            email: 'michaels@sourcepad.com',
            password: '12345678',
-           admin: Account.first.id)
+           account_id: Account.first.id,
+           admin: 1)
 
 #employee
 User.create(first_name: 'Teejay',
             last_name: 'Obazee',
             email: 'tjo@sourcepad.com',
-            password: '12345678')
+            password: '12345678',
+            account_id: Account.first.id
+            )
 
 #employee
 User.create(first_name: 'Gino',
             last_name: 'Cortez',
             email: 'ginoc@sourcepad.com',
-            password: '12345678')
+            password: '12345678',
+            account_id: Account.first.id)
 
 #initialize badges
 designs = [
