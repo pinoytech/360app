@@ -21,7 +21,10 @@
                           | * #{msg}
 
                 h4
-                  = "Exam Name: #{@exams_user.exam.name}"
+                  = "Exam Name: #{@exams_user.exam.name} - #{@exams_user.user.full_name}"
+                - if @exams_user.exam.multiple_choice?
+                  hr
+                  = render 'static_multiple_choice'
                 hr
                 .row
                   .col-sm-12

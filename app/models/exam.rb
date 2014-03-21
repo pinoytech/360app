@@ -6,4 +6,8 @@ class Exam < ActiveRecord::Base
   has_many :exams_users
 
   validates :name, presence: true
+
+  def multiple_choice?
+    exams_questions.joins(:question).where('questions.kind=?', Question::MULTIPLE_CHOICE).count > 0
+  end
 end
