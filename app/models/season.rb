@@ -15,4 +15,8 @@ class Season < ActiveRecord::Base
   def activate_seasons
     Season.open.update_all(status: CLOSED) if self.active?
   end
+
+  def self.active_exams
+    open.first.exams
+  end
 end
