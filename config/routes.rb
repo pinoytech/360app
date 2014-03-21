@@ -1,6 +1,11 @@
 Hackathon2014::Application.routes.draw do
   devise_for :users
-  resources :users
+  resources :users do
+    member do
+      post :save_exam
+      get  :assign_exam
+    end
+  end
   root to: 'home#index'
 
   resources :questions
