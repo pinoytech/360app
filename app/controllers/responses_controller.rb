@@ -9,7 +9,11 @@ class ResponsesController < ApplicationController
 
     for i in 0..20
       if params[:response]["answer_#{i}".to_sym].present?
-        @response = Response.create({ "exams_user_id" => strong_params[:exams_user_id], "answer" => params[:response]["answer_#{i}".to_sym] })
+        @response = Response.create({
+          "exams_user_id" => strong_params[:exams_user_id],
+          "question_id" => params[:response]["question_#{i}".to_sym],
+          "answer" => params[:response]["answer_#{i}".to_sym]
+          })
       end
     end
 
@@ -17,7 +21,7 @@ class ResponsesController < ApplicationController
       if @response
         @response.exams_user.completed = true
         @response.exams_user.save
-        format.html { redirect_to @response }
+        format.html { redirect_to feedbacks_path, notice: 'Response was successfully submitted.' }
       else
         format.html {
           @exams_user = ExamsUser.find(params[:response][:exams_user_id])
@@ -29,6 +33,6 @@ class ResponsesController < ApplicationController
 
   private
   def strong_params
-    params.require(:response).permit(:exams_user_id)
+    params.require(:response).permit(:exams_user_id, :question_id)
   end
 end

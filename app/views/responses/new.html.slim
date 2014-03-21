@@ -36,6 +36,7 @@
                           - questions.each_with_index do |question, index|
                             .form-group
                               = "#{index + 1}. #{question.title}"
+                              = f.hidden_field "question_#{index}".to_sym, value: question.id
                               - if question.kind == 'Multiple Choice' || question.kind == 'multiple choice'
                                 .answers-container.row
                                   .col-md-1

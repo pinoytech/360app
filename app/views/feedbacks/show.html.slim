@@ -1,1 +1,15 @@
-show
+.container
+  .row
+    =render 'sidebar'
+    .col-sm-9
+      .panel.panel-info
+        .panel-heading
+          h3.panel-title
+            = "Question: #{@feedback.exam.name}"
+        .panel-body
+          #responses.list-group
+            - @feedback.responses.each do |response|
+              h4.list-group-item-heading= response.question.title
+              p.list-group-item-text.answer
+                = "- #{response.answer}"
+              hr

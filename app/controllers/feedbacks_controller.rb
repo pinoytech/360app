@@ -5,7 +5,7 @@ class FeedbacksController < ApplicationController
   end
 
   def show
-
+    @feedback = ExamsUser.find(params[:id])
   end
 
 end
