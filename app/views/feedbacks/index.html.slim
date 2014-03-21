@@ -18,7 +18,7 @@
         .panel-body
           - if @pending_feedback.any?
             - @pending_feedback.each do |feedback|
-              = link_to feedback.name
+              li= link_to feedback.exam.name, '#'
           - else
             p You have no pending feedback.
 
