@@ -4,4 +4,8 @@ class Exam < ActiveRecord::Base
   has_many :exams_questions
   has_many :users, through: :exams_users
   has_many :exams_users
+
+  def exam_completed
+    
+  end
 end
