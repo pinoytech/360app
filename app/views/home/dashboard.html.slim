@@ -11,16 +11,31 @@
         .panel-heading
           h3.panel-title Badges
         .panel-body
-          - if current_user.badges.any?
-            | You currently have
-            = " #{pluralize(current_user.badges.size, 'badge')}"
-            - current_user.badges.each do |badge|
-              = image_tag badge.image.url(:thumb), class: 'img-responsive'
+          / - if current_user.badges.any?
+          /   h5 System Badges:
+          /   p= " #{pluralize(current_user.badges.size, 'Badge')}"
+          /   - current_user.badges.each do |badge|
+          /     = image_tag badge.image.url(:thumb), class: 'img-responsive js-popover', 'data-placement' => 'top', 'data-content' => "You have been awarded the #{badge.name}"
+          / - if current_user.badges.any?
+          .row
+            .col-sm-12
+              -if current_user.message_badges_size.size > 0
+                p= "#{pluralize(current_user.messages.count(:badge_id), 'Badge')}"
+                .row
+                   - current_user.messages.map(&:badge).each do |badge|
+                    .col-sm-2
+                      = link_to badge, class: 'thumbnail' do
+                        = image_tag badge.image.url(:thumb), class: 'js-popover', 'data-placement' => 'top', 'data-content' => "You have been awarded the #{badge.name}"
       .panel.panel-default
         .panel-heading
           h3.panel-title Notifications
         .panel-body
           | Feedback
+
+javascript:
+  $(function(){
+    popOver.tooltip();
+  });
 
 
 
