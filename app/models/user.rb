@@ -25,7 +25,7 @@ class User < ActiveRecord::Base
   def self.admin
     where(admin: true)
   end
-
+  
   def personal_messages
     Message.personal.where('from_id = ?', self.id)
   end

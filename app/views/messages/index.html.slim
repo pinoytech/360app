@@ -19,7 +19,7 @@
                     em.span.message_links
                       .text-info.blue=message.sender.full_name
                       .text-info
-                        i class="fa fa-arrow-circle-right"
+                        i class="fa fa-angle-double-right"
                       .text-info.blue=message.receiver.full_name
                       .text-info=privacy_text(message)
                       .text-info=" ago".prepend(time_ago_in_words(message.created_at))

@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
   def index
-    @account = current_user.account
+    #@account = current_user.account
     @users = @account.users
     respond_to do |format|
       format.html
@@ -17,6 +17,7 @@ class UsersController < ApplicationController
 
   def admins
     @users = User.admin
+    @accounts = Account.all
     respond_to do |format|
       format.html
     end
@@ -25,6 +26,7 @@ class UsersController < ApplicationController
   def assign_exam
     @user = User.find params[:id]
     @exams = Season.active_exams
+    @exams = @exams - @user.exams
     @exams_user = ExamsUser.new
   end
 
@@ -32,9 +34,13 @@ class UsersController < ApplicationController
     @exams_user = ExamsUser.new(exams_user_params)
     respond_to do |format|
       if @exams_user.save
+        @account = current_user.account        
+        @users = @account.users
         format.html { redirect_to users_path, notice: 'Exam was successfully assigned.' }
+        format.js
       else
         format.html { render action: 'assign_exam' }
+        format.js
       end
     end
   end
