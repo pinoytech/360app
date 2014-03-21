@@ -10,6 +10,7 @@ gem 'slim'
 gem 'devise'
 gem "paperclip", "~> 4.1"
 gem 'omniauth-google-oauth2'
+gem 'thin'
 
 
 group :doc do
