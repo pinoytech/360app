@@ -13,6 +13,6 @@
             - @users.each do |user|
               tr
                 td= link_to "#{user.first_name} #{user.last_name}", user
-                td= link_to "Assign", "javascript:void(0)"
+                td= link_to "Assign", "javascript:void(0)", class: 'btn btn-primary'
 
 
