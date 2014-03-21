@@ -4,6 +4,7 @@ class ExamsController < ApplicationController
 
     respond_to do |format|
       format.html
+      format.json
     end
   end
 
@@ -14,6 +15,7 @@ class ExamsController < ApplicationController
 
     respond_to do |format|
       format.html
+      format.json
     end
   end
 
@@ -24,6 +26,27 @@ class ExamsController < ApplicationController
     end
   end
 
+  def question_list
+    @questions = Question.all
+    respond_to do |format|
+      format.json
+    end  
+  end
+
+  def create
+    questions = Question.where(id: params[:selected_questions].split(','))
+    @exam = Exam.new(allowed_params)
+    respond_to do |format|
+      if @exam.save
+        @exam.questions << questions
+        binding.pry
+        format.html { redirect_to exams_path, notice: 'Exam was successfully created.' }
+      else
+        format.html { render action: 'new' }
+      end
+    end    
+  end
+
   def category_questions
     if params[:category_id].present?
       @category = Category.find params[:category_id]
@@ -31,6 +54,42 @@ class ExamsController < ApplicationController
     else
       @questions = Question.all
     end
+    respond_to do |format|
+      format.html
+      format.json
+    end    
+  end
+
+  def select_questions
+    @question_ids = params[:question_ids].split(',')
     
+    if params[:catregory_id]
+      @category = Category.find params[:category_id]
+      @questions = @category.questions
+    else
+      @questions = Question.all
+    end
+
+    @selected_questions = Question.where(id: @question_ids)
+    @questions = @questions - @selected_questions
+  end
+
+  def remove_questions
+    @question_ids = params[:question_ids].split(',')
+    
+    if params[:catregory_id]
+      @category = Category.find params[:category_id]
+      @questions = @category.questions
+    else
+      @questions = Question.all
+    end
+
+    @selected_questions = Question.where(id: @question_ids)
+    @questions = @questions - @selected_questions    
+  end
+
+  private
+  def allowed_params
+    params.require(:exam).permit :name, :description, :season_id
   end
 end
