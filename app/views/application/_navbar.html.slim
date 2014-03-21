@@ -17,6 +17,9 @@
               li
                 = link_to destroy_user_session_path, method: :delete do
                   | Logout
+              li
+                = link_to edit_user_registration_path do
+                  | Edit Profile
         p.navbar-text.navbar-right=welcome(current_user)
       - else
         ul.nav.navbar-nav.navbar-right
