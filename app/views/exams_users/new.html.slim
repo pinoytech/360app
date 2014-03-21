@@ -23,7 +23,7 @@
                           br
                           = question.title
                           = f.fields_for :responses do |c|
-                            - if question.type == 'Multiple Choice'
+                            - if question.kind == 'Multiple Choice'
                               .row
                                 .col-sm-1
                                   = c.radio_button :answer, 1
@@ -40,7 +40,7 @@
                                 .col-sm-1
                                   = c.radio_button :answer, 5
                                   | &nbsp;5
-                            - if question.type == 'Simple'
+                            - if question.kind == 'Simple'
                               .row
                                 .col-sm-12
                                   = c.text_area :answer
