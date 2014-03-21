@@ -11,6 +11,5 @@
       ul.nav.navbar-nav.navbar-right
         li
           = link_to destroy_user_session_path, method: :delete do
-            i.glyphicon.glyphicon-log-out
-            |  Logout
+            | Logout
       p.navbar-text.navbar-right="Welcome #{current_user.full_name}!"

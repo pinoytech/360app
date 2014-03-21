@@ -1,0 +1,34 @@
+#messageModal.modal.fade
+  .modal-dialog
+    .modal-content
+      .modal-header
+        button.close aria-hidden="true" data-dismiss="modal" type="button"  &times;
+        h4.modal-title Give a shout-out!
+      = form_for @message, html: {role: 'form'}, remote: true do |f|
+        .modal-body
+          #user_select.select2-container.select2-container-active style=('width: 560px;')
+            a.select2-choice href="javascript:void(0)" onclick=('return false;') tabindex="-1"
+              span.select2-chosen &nbsp;
+              abbr.select2-search-choice-close
+              span.select2-arrow
+                b
+            input#user_autogen.select2-focusser.select2-offscreen tabindex="0" type="text"
+          .form-group
+            = f.label :title
+            = f.text_field :title, placeholder: 'Title', class: 'form-control'
+          .form-group
+            = f.label :body
+            = f.text_area :body, rows: '4', placeholder: 'Details', class: 'form-control'
+          .form-group
+            = f.label :badge
+            = f.text_field :badge_id, rows: '4', placeholder: 'Details', class: 'form-control'
+          .form-group
+            h5 Share with
+            .btn-group
+              = f.radio_button :share, true, id: 'everyone', style: 'display:none;'
+              label.btn.btn-primary for="everyone"  Everyone in the company
+              = f.radio_button :share, false, id: 'recipient', style: 'display:none;'
+              label.btn.btn-primary for="recipient"  Recipient and me
+        .modal-footer
+          button.btn.btn-default data-dismiss="modal" type="button"  Close
+          button.btn.btn-primary type="button" Send

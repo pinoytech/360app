@@ -6,4 +6,6 @@ Hackathon2014::Application.routes.draw do
   resources :messages
   root to: 'home#dashboard'
   match 'dashboard' => 'home#dashboard', via: :get
+
+  resources :messages
 end
