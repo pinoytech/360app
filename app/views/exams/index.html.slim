@@ -13,5 +13,5 @@
                   h4.list-group-item-heading= exam.name
                   p.list-group-item-text= exam.description
                   p.list-group-item-text
-                    = link_to 'Edit', edit_exam_path(cat), class: 'btn btn-success'
+                    = link_to 'Edit', edit_exam_path(exam), class: 'btn btn-success'
                     = link_to 'Remove', exam, method: :delete, class: 'btn btn-danger'

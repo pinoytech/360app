@@ -4,7 +4,11 @@ Hackathon2014::Application.routes.draw do
 
   resources :questions
   resources :categories
-  resources :exams
+  resources :exams do
+    collection do
+      get :category_questions
+    end
+  end
   resources :seasons
 
   resources :messages do
