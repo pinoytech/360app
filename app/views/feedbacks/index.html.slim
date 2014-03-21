@@ -6,16 +6,20 @@
         .panel-heading
           h3.panel-title Feedback You Provided
         .panel-body
-          | My Feedback
+          p You have not provided any feedback yet.
       .panel.panel-info
         .panel-heading
           h3.panel-title Feedback for You
         .panel-body
-          | My Feedback
+          p Feedback is still being collected.
       .panel.panel-info
         .panel-heading
           h3.panel-title Pending Feedback
         .panel-body
-          | Pending
+          - if @pending_feedback.any?
+            - @pending_feedback.each do |feedback|
+              = link_to feedback.name
+          - else
+            p You have no pending feedback.
 
 
