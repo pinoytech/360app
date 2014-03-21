@@ -2,5 +2,5 @@ development:
   key: 180436381726-q607lfmaht2s92jienfcjulvis8c7qsq.apps.googleusercontent.com
   secret: _7BHnx9RiXROAlqM71XmEpXp
 production:
-  key: 580834371809-kj9nrfvpfusd0d30rrvqa7iu78fus34s@developer.gserviceaccount.com
+  key: 580834371809-kj9nrfvpfusd0d30rrvqa7iu78fus34s.apps.googleusercontent.com
   secret: WAxszY-FPZFXEAaEAHCJbDv4
