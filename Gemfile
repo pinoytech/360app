@@ -12,7 +12,6 @@ gem "paperclip", "~> 4.1"
 gem 'omniauth-google-oauth2'
 gem 'thin'
 
-
 group :doc do
   gem 'sdoc', require: false
 end
