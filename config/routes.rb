@@ -8,4 +8,5 @@ Hackathon2014::Application.routes.draw do
   match 'dashboard' => 'home#dashboard', via: :get
 
   resources :messages
+  resources :badges
 end
