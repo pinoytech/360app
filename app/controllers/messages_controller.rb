@@ -11,7 +11,7 @@ class MessagesController < ApplicationController
   end
 
   def create
-    @message = Message.new(params[:message])
+    @message = Message.new(strong_params)
     respond_to do |format|
       if @message.save
         format.html { redirect_to messages_path }
@@ -24,5 +24,10 @@ class MessagesController < ApplicationController
   def search_users
     user = User.search params[:term]
     render json: { data: user }
+  end
+
+  private
+  def strong_params
+    params.require(:message).permit(:title, :body, :user_id, :from_id, :share)
   end
 end

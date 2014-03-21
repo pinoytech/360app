@@ -4,9 +4,10 @@
       .modal-header
         button.close aria-hidden="true" data-dismiss="modal" type="button"  &times;
         h4.modal-title Give a shout-out!
-      = form_for @message, html: {role: 'form'}, remote: true do |f|
+      = form_for @message, html: {role: 'form'} do |f|
         .modal-body
-          #user_select.select2-container.select2-container-active style=('width: 560px;')
+          =f.hidden_field :user_id, current_user.id
+          #user_select.select2-container.select2-container-active style=('width: 560px;margin-bottom:15px;')
             a.select2-choice href="javascript:void(0)" onclick=('return false;') tabindex="-1"
               span.select2-chosen &nbsp;
               abbr.select2-search-choice-close
@@ -31,4 +32,26 @@
               label.btn.btn-primary for="recipient"  Recipient and me
         .modal-footer
           button.btn.btn-default data-dismiss="modal" type="button"  Close
-          button.btn.btn-primary type="button" Send
+          =f.submit 'Send', class: 'btn btn-primary'
+
+javascript:
+  $(function(){
+     $("#user_select").select2({
+         placeholder: "Search a user...",
+         minimumInputLength: 1,
+         ajax: {
+             url: "/messages/search_users",
+             dataType: 'json',
+             data: function (term, page) {
+                 return {
+                     term: term
+                 };
+             },
+             results: function (data, page) {
+                return {results: data};
+             }
+         },
+         dropdownCssClass: "bigdrop",
+         escapeMarkup: function (m) { return m; }
+     });
+  })
