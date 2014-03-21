@@ -22,10 +22,15 @@
             = f.label :body
             = f.text_area :body, rows: '4', placeholder: 'Details', required: true, class: 'form-control'
           .form-group
-            = f.label :badge
-            - @badges.each do |badge|
-              = f.radio_button :badge_id, badge.id
-              = image_tag badge.image.url(:thumb)
+            .row
+              .col-sm-12
+                = f.label :badge
+            - @badges.in_groups_of(4, false).each do |badge_group|
+              .row
+                - badge_group.each do |badge|
+                  .col-sm-3
+                    = f.radio_button :badge_id, badge.id
+                    = image_tag badge.image.url(:thumb), class: 'js-popover', 'data-placement' => 'top', 'data-content' => badge.description
           .form-group
             h5 Share with
             .btn-group
@@ -39,6 +44,7 @@
 
 javascript:
   $(function(){
+    popOver.tooltip();
      $("#user_select").select2({
          placeholder: "Search a user...",
          minimumInputLength: 1,

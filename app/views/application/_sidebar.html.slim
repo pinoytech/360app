@@ -1,8 +1,12 @@
 - if current_user
   #sidebar.col-xs-6.col-sm-3 role="navigation"
     ul.nav
-      li.active= link_to 'Dashboard', dashboard_path
-      li =link_to 'Messages', messages_path
-      li =link_to '360 Feedback', feedbacks_path
+      li.active
+      	= link_to '<i class="fa fa-tachometer"></i><span>Dashboard</span>'.html_safe, dashboard_path
+      li
+      	= link_to '<i class="fa fa-envelope"></i><span>Messages</span>'.html_safe, messages_path
+      li
+	      = link_to '<i class="fa fa-bullhorn"></i><span>360 Feedback</span>'.html_safe, feedbacks_path
       - if current_user.admin?
-        li=link_to 'Administration', admin_dashboard_path
+        li
+          = link_to '<i class="fa fa-bar-chart-o"></i><span>Administration</span>'.html_safe, admin_dashboard_path

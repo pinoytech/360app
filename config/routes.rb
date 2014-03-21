@@ -1,5 +1,6 @@
 Hackathon2014::Application.routes.draw do
   devise_for :users
+  resources :users
   root to: 'home#index'
 
   resources :questions
@@ -13,7 +14,6 @@ Hackathon2014::Application.routes.draw do
     end
   end
   resources :seasons
-
   resources :messages do
     collection do
       get :search_users
