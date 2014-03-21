@@ -1,0 +1,5 @@
+- @questions.each do |ques|
+  .question
+    = link_to ques, class: 'list-group-item' do
+      h4.list-group-item-heading= ques.title
+      p.list-group-item-text= ques.description

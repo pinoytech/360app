@@ -27,7 +27,7 @@ class QuestionsController < ApplicationController
     @question = Question.new(question_params)
     respond_to do |format|
       if @question.save
-        format.html { redirect_to @question, notice: 'Question was successfully created.' }
+        format.html { redirect_to questions_path, notice: 'Question was successfully created.' }
       else
         format.html { render action: "new" }
       end

@@ -1,17 +1,48 @@
 .container
-  .row.row-offcanvas.row-offcanvas-left
+  .row
     =render 'sidebar'
-    .col-xs-12.col-sm-9
-      .panel.panel-default
-        .panel-heading
-          h3.panel-title Exam
-        .panel-body  
-          p= link_to 'Create Exam', new_exam_path, class: 'btn btn-primary'
-          .list-group
-            - @exams.each do |exam|
-                .list-group-item
-                  h4.list-group-item-heading= exam.name
-                  p.list-group-item-text= exam.description
-                  p.list-group-item-text
-                    = link_to 'Edit', edit_exam_path(cat), class: 'btn btn-success'
-                    = link_to 'Remove', exam, method: :delete, class: 'btn btn-danger'
+    = form_for @exam, html: {role: 'form'} do |f|
+      .col-xs-12.col-sm-9
+        .panel.panel-default
+          .panel-heading
+            h3.panel-title Create Exam
+          .panel-body
+            .row        
+              .col-sm-12
+                .col-sm-6
+                  .panel.panel-default
+                    .panel-heading
+                      h3.panel-title Categories
+                    .panel-body 
+                      = select_tag 'category_selection', options_from_collection_for_select(Category.all, :id, :name), :prompt => 'All Categories', class: 'form-control'
+
+                .col-sm-6
+                  .panel.panel-default
+                    .panel-heading
+                      h3.panel-title Exam
+                    .panel-body              
+                      .form-group
+                        = f.label :name
+                        = f.text_field :name, placeholder: 'Title', class: 'form-control'
+                      .form-group
+                        = f.label :description
+                        = f.text_area :description, rows: '4', placeholder: 'Description', class: 'form-control'
+            .row
+              hr
+            .row
+              .col-sm-12
+                .col-sm-5
+                  .question-list
+                    = render 'questions'
+                .col-sm-1
+                  .question-navigations
+                    li.right-button.fa.fa-arrow-circle-right
+                    .clearfix
+                    li.left-button.fa.fa-arrow-circle-left
+                .col-sm-5  
+                  .active-question-list
+
+            .row
+              .col-sm-12.text-right
+                = f.submit 'Save', class: 'btn btn-success'
+                    
