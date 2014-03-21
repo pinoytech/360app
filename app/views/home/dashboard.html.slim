@@ -25,7 +25,7 @@
               -if current_user.message_badges_size.size > 0
                 p= "#{pluralize(current_user.messages.count(:badge_id), 'Badge')}"
                 .row
-                  - current_user.messages.map(&:badge).each do |badge|
+                  - current_user.messages.map(&:badge).reject{|b| b.nil?}.each do |badge|
                     .col-sm-2
                       = link_to badge, class: 'thumbnail' do
                         = image_tag badge.image.url(:thumb), class: 'js-popover', 'data-placement' => 'top', 'data-content' => "You have been awarded the #{badge.name}"
