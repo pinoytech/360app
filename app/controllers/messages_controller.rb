@@ -1,8 +1,7 @@
 class MessagesController < ApplicationController
 
   def index
-    @public_messages = Message.public
-    @private_messages = current_user.messages.personal
+    @messages = get_messages
     @message = Message.new
     @badges = Badge.all
   end
@@ -37,5 +36,13 @@ class MessagesController < ApplicationController
   private
   def strong_params
     params.require(:message).permit(:title, :body, :user_id, :from_id, :share, :badge_id)
+  end
+
+  def get_messages
+    messages = []
+    messages << Message.public
+    messages << Message.personal
+    messages << current_user.personal_messages
+    return messages.flatten.uniq
   end
 end

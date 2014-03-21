@@ -26,6 +26,10 @@ class User < ActiveRecord::Base
     where(admin: true)
   end
 
+  def personal_messages
+    Message.personal.where('from_id = ?', self.id)
+  end
+
   def full_name
     [first_name, last_name].select{|x| x.present?}.join(' ')
   end
