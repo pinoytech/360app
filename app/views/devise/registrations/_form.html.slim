@@ -1,28 +1,29 @@
 #sign-up-form-container.row
-  h2 360Feedback
-  .row
-    .col-sm-12
-      p
-        | Join 360Feedback and Grow your own company through meaningful feedbacks
-  .row
-    .col-sm-12
-      = link_to user_omniauth_authorize_path(:google_oauth2), class: 'btn btn-lg btn-danger' do
-        | Sign up with Google
-        i.fa.fa-google-plus
-  .row
-    .col-sm-12
-      = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+  .col-sm-12
+    h2 360Feedback
+    .row
+      .col-sm-12
+        p
+          | Join 360Feedback and Grow your own company through meaningful feedbacks
+    .row
+      .col-sm-12
+        = link_to user_omniauth_authorize_path(:google_oauth2), class: 'btn btn-lg btn-danger' do
+          | Sign up with Google
+          i.fa.fa-google-plus
+    .row
+      .col-sm-12
+        = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
 
-        = devise_error_messages!
+          = devise_error_messages!
 
-        .form-group
-          = f.label :email
-          =f.email_field :email, autofocus: true, class: 'form-control'
-        .form-group
-          = f.label :password
-          = f.password_field :password, autocomplete: "off", class: 'form-control'
-        .form-group
-          = f.label :password_confirmation
-          = f.password_field :password_confirmation, autocomplete: "off", class: 'form-control'
-        .form-group
-          = f.submit 'Sign up', class: 'btn btn-primary btn-lg'
+          .form-group
+            = f.label :email
+            =f.email_field :email, autofocus: true, class: 'form-control'
+          .form-group
+            = f.label :password
+            = f.password_field :password, autocomplete: "off", class: 'form-control'
+          .form-group
+            = f.label :password_confirmation
+            = f.password_field :password_confirmation, autocomplete: "off", class: 'form-control'
+          .form-group
+            = f.submit 'Sign up', class: 'btn btn-primary btn-lg'

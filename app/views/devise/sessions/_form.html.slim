@@ -1,18 +1,25 @@
-= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
-  .form-group
-    = f.label :email
-    = f.email_field :email, autofocus: true, class: 'form-control'
+.row
+  .col-sm-12
+    = link_to user_omniauth_authorize_path(:google_oauth2), class: 'btn btn-lg btn-danger' do
+      | Sign In with Google
+      i.fa.fa-google-plus
+.row
+  .col-sm-12
+    = form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
+      .form-group
+        = f.label :email
+        = f.email_field :email, autofocus: true, class: 'form-control'
 
-  .form-group
-    = f.label :password
-    = f.password_field :password, class: 'form-control'
+      .form-group
+        = f.label :password
+        = f.password_field :password, class: 'form-control'
 
-  - if devise_mapping.rememberable?
-    .form-group
-      .checkbox
-        label
-          = f.check_box :remember_me
-          |  Remember Me
+      - if devise_mapping.rememberable?
+        .form-group
+          .checkbox
+            label
+              = f.check_box :remember_me
+              |  Remember Me
 
-  .form-group
-    button.btn.btn-primary Sign In
+      .form-group
+        button.btn.btn-primary Sign In

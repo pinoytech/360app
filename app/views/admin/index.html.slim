@@ -29,3 +29,4 @@
               li= link_to 'Manage User', users_path, class: 'btn btn-primary'
             - if current_user.super_admin?
               li= link_to 'Manage Admin User', admins_users_path, class: 'btn btn-primary'
+              li= link_to 'Manage Accounts', accounts_path, class: 'btn btn-primary'

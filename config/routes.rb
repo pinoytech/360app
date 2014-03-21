@@ -17,6 +17,7 @@ Hackathon2014::Application.routes.draw do
   root to: 'home#index'
 
   resources :questions
+  resources :accounts
   resources :categories
   resources :exams do
     collection do
