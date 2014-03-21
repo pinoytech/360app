@@ -3,14 +3,14 @@
     =render 'sidebar'
     .col-xs-12.col-sm-9
       - unless current_user.super_admin?
-        .panel.panel-default
+        .panel.panel-info
           .panel-heading
             h3.panel-title Application Settings
           .panel-body
             ul.list-unstyled.list-inline
               li= link_to 'Badges', badges_path, class: 'btn btn-primary'
               li= link_to 'Cycles', seasons_path, class: 'btn btn-primary'
-        .panel.panel-default
+        .panel.panel-info
           .panel-heading
             h3.panel-title Feedback Management
           .panel-body
@@ -19,8 +19,8 @@
               li= link_to 'Exams', exams_path, class: 'btn btn-primary'
               li= link_to 'Questions', questions_path, class: 'btn btn-primary'
               li= link_to 'Assign Exams', users_path, class: 'btn btn-primary'
-              li= link_to 'Reports', users_path, class: 'btn btn-primary'
-      .panel.panel-default
+              li= link_to 'Reports', reports_path, class: 'btn btn-primary'
+      .panel.panel-info
         .panel-heading
           h3.panel-title User Management
         .panel-body

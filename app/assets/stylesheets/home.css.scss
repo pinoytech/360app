@@ -13,11 +13,17 @@ h3.panel-title small
   color: #f1f1f1;
 }
 
-.info {
+.text-info {
   margin-right: 4px;
   display: inline;
   &.blue {
     color: #285e8e;
+  }
+}
+
+.user-exams {
+  .label-info {
+    margin-right: 5px;
   }
 }
 

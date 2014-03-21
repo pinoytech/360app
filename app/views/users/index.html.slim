@@ -14,8 +14,8 @@
             - @users.each do |user|
               tr
                 td= link_to "#{user.first_name} #{user.last_name}", user
-                td
+                td.user-exams
                   - user.exams.each do |exam|
-                    =exam.name
+                    span.label.label-info=exam.name
                 td= link_to 'Assign', assign_exam_user_path(user), remote: true, class: 'btn-assign'
 #exam

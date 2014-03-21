@@ -3,6 +3,7 @@
     = link_to user_omniauth_authorize_path(:google_oauth2), class: 'btn btn-lg btn-danger' do
       | Sign In with Google
       i.fa.fa-google-plus
+br
 .row
   .col-sm-12
     = form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|

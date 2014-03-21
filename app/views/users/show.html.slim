@@ -5,4 +5,25 @@
       .panel.panel-info
         .panel-heading= @user.full_name
         .panel-body
-          | blah
+          .col-xs-8
+            ul.list-unstyled
+              li Name: #{@user.full_name}
+              li Email: #{@user.email}
+              li Position: #{@user.job_title}
+          .col-sm-4
+            .thumbnail
+              = image_tag @user.avatar.url(:thumb)
+          .col-xs-12
+      .panel.panel-info
+        .panel-heading
+          h3.panel-title Badges
+        .panel-body
+          .row
+            .col-sm-12
+              -if @user.message_badges_size.size > 0
+                p= "#{pluralize(@user.messages.count(:badge_id), 'Badge')}"
+                .row
+                  - @user.messages.map(&:badge).reject{|b| b.nil?}.each do |badge|
+                    .col-sm-2
+                      = link_to badge, class: 'thumbnail' do
+                        = image_tag badge.image.url(:thumb), class: 'js-popover', 'data-placement' => 'top', 'data-content' => "You have been awarded the #{badge.name}"
