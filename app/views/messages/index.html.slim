@@ -23,7 +23,7 @@
                       .info.blue=message.receiver.full_name
                       .info=privacy_text(message)
                       .info=" ago".prepend(time_ago_in_words(message.created_at))
-                  td=image_tag message.badge.image.url(:thumb) unless message.badge.nil?
+                  td=image_tag message.badge.image.url(:thumb), class: 'js-popover', 'data-placement' => 'top', 'data-content' => "#{message.sender.full_name} has given #{message.receiver.full_name} the #{message.badge.name}" unless message.badge.nil?
               - if @private_messages.any?
                 - @private_messages.each do |message|
                   tr
@@ -38,6 +38,10 @@
                         .info=privacy_text(message)
                         .info=" ago".prepend(time_ago_in_words(message.created_at))
                     td
-                      =image_tag message.badge.image.url(:thumb) unless message.badge.nil?
+                      =image_tag message.badge.image.url(:thumb), class: 'js-popover', 'data-placement' => 'top', 'data-content' => "#{message.sender.full_name} has given #{message.receiver.full_name} the #{message.badge.name}" unless message.badge.nil?
 = render 'new_modal'
+javascript:
+  $(function(){
+    popOver.tooltip();
+  });
 
