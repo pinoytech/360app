@@ -7,6 +7,6 @@
         = link_to '<i class="fa fa-envelope"></i><span>Messages</span>'.html_safe, messages_path
       li
         = link_to '<i class="fa fa-bullhorn"></i><span>360 Feedback</span>'.html_safe, feedbacks_path
-      - if current_user.admin?
+      - if current_user.admin? || current_user.super_admin?
         li
           = link_to '<i class="fa fa-bar-chart-o"></i><span>Administration</span>'.html_safe, admin_dashboard_path

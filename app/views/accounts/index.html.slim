@@ -6,9 +6,17 @@
         .panel-heading
           h3.panel-title Accounts
         .panel-body
+          p= link_to 'Add a Company Account', new_account_path, remote: true, class: 'btn btn-primary'
           table.table.table-responsive.table-striped.table-bordered.table-hover.table-condensed
             tr
               th Name
+              th Description
+              th Email
+              th Contact Nos.
             - @accounts.each do |account|
               tr
                 td= link_to "#{account.name}", account
+                td= account.description
+                td= account.email
+                td= account.telephone
+#accountModal
