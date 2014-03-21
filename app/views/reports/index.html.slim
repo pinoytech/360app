@@ -6,3 +6,44 @@
         .panel-heading
           h3.panel-title Report
         .panel-body  
+          .pie-chart
+
+javascript:
+  complete = "#{@completed}"
+  incomplete = "#{@incomplete}"
+  $(".pie-chart").highcharts({
+    chart: {
+      plotBackgroundColor: null,
+      plotBorderWidth: null,
+      plotShadow: false
+    },
+    title: {
+      text: "360 degree review status"
+    },
+    tooltip: {
+      pointFormat: "{series.name}: <b>{point.percentage:.1f}%</b>"
+    },
+    plotOptions: {
+      pie: {
+        allowPointSelect: true,
+        cursor: "pointer",
+        dataLabels: {
+          enabled: true,
+          color: "#000000",
+          connectorColor: "#000000",
+          formatter: function() {
+            return "<b>" + this.point.name + "</b>: " + this.percentage + " %";
+          }
+        }
+      }
+    },
+    series: [
+      {
+        type: "pie",
+        name: "Browser share",
+        data: [
+          ["In Progress", parseInt(complete)], ["Awaiting Feedback", parseInt(incomplete)]
+        ]
+      }
+    ]
+  });
