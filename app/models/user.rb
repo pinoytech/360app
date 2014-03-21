@@ -5,6 +5,8 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :messages
+  has_many :badges_users
+  has_many :badges, through: :badges_users
 
   def full_name
     [first_name, last_name].select{|x| x.present?}.join(' ')
