@@ -1,0 +1,52 @@
+categories:
+  - name: Communication
+    description: 
+  - name: Willingness to help
+    description:
+
+questions:
+  - title: How well would you rate the manager's ability to communicate his/her desires and requirements?
+    description: 
+    kind: Multiple Choice
+    category: Communication
+
+  - title: How would you rate the manager's ability to organize tasks, goals and priorities.
+    description: 
+    kind: Multiple Choice
+    category: Communication
+
+  - title: How would you rate the manager's ability to communicate to you as an individual?
+    description: 
+    kind: Multiple Choice
+    category: Communication
+
+  - title: How would you rate the manager's ability to communicate in a group setting?
+    description: 
+    kind: Multiple Choice
+    category: Communication
+
+  - title: Rate the manager's ability to effectively relate your concerns or needs to customers
+    description: 
+    kind: Multiple Choice
+    category: Communication
+
+  - title: Rate the manager's ability to effectively relate your concerns or needs to your co-workers
+    description: 
+    kind: Multiple Choice
+    category: Communication
+    
+  - title: Rate your comfort level in discussing your concerns and needs with the manager
+    description: 
+    kind: Multiple Choice
+    category: Communication
+
+exams:
+  - name: Manager's Evaluation
+    description: 
+    
+
+    
+
+    
+
+    
