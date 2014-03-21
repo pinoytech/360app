@@ -1,24 +1,7 @@
-.panel.panel-primary
-  .panel-heading
-    h3.panel-title Sign In
-  .panel-body
+.centered-form
+  .panel.panel-primary
+    .panel-heading
+      h3.panel-title Sign In
+    .panel-body
 
-    = form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
-
-      .form-group
-        = f.label :email
-        = f.email_field :email, autofocus: true, class: 'form-control'
-
-      .form-group
-        = f.label :password
-        = f.password_field :password, class: 'form-control'
-
-      - if devise_mapping.rememberable?
-        .form-group
-          .checkbox
-            label
-              = f.check_box :remember_me
-              |  Remember Me
-
-      .form-group
-        button.btn.btn-primary Sign In
+      = render 'form'
