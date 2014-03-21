@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
       :small => "200x200>",
       :thumb => "100x100>"
     },
-    :default_url => "/avatar/:style/missing.png"
+    :default_url => "/avatar/:style/missing.jpg"
   validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
 
   has_many :messages
@@ -21,6 +21,10 @@ class User < ActiveRecord::Base
 
   accepts_nested_attributes_for :ratees
   accepts_nested_attributes_for :exams
+
+  def self.admin
+    where(admin: true)
+  end
 
   def personal_messages
     Message.personal.where('from_id = ?', self.id)

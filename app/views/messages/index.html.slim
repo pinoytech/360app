@@ -2,7 +2,7 @@
   .row
     =render 'sidebar'
     .col-sm-9
-      = link_to 'Send a Shout out!', new_message_path, remote: true, class: 'btn btn-primary'
+      = link_to 'Send a Shout out!', new_message_path, remote: true, class: 'btn btn-primary btn-lg'
       br
       br
       .panel.panel-default
@@ -23,6 +23,10 @@
                       .info.blue=message.receiver.full_name
                       .info=privacy_text(message)
                       .info=" ago".prepend(time_ago_in_words(message.created_at))
-                  td=image_tag message.badge.image.url(:thumb) unless message.badge.nil?
+                  td=image_tag message.badge.image.url(:thumb), class: 'js-popover', 'data-placement' => 'top', 'data-content' => "#{message.sender.full_name} has given #{message.receiver.full_name} the #{message.badge.name}" unless message.badge.nil?
 = render 'new_modal'
+javascript:
+  $(function(){
+    popOver.tooltip();
+  });
 

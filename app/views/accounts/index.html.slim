@@ -1,0 +1,21 @@
+.container
+  .row
+    =render 'sidebar'
+    .col-sm-9
+      .panel.panel-default
+        .panel-heading
+          h3.panel-title Accounts
+        .panel-body
+          table.table.table-responsive.table-striped.table-bordered.table-hover.table-condensed
+            tr.info
+              th Name
+              th Feedback
+              th Action
+            - @users.each do |user|
+              tr
+                td= link_to "#{user.first_name} #{user.last_name}", user
+                td
+                  - user.exams.each do |exam|
+                    =exam.name
+                td= link_to 'Assign', assign_exam_user_path(user), remote: true, class: 'btn-assign'
+#exam

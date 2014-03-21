@@ -1,7 +1,8 @@
 Hackathon2014::Application.routes.draw do
 
   devise_for :users, :controllers => {
-    :omniauth_callbacks => "omniauth_callbacks" 
+    :omniauth_callbacks => "omniauth_callbacks",
+    registrations: 'users/registrations'
   }
 
   resources :users do
@@ -9,11 +10,15 @@ Hackathon2014::Application.routes.draw do
       post :save_exam
       get  :assign_exam
     end
+    collection do
+      get :admins
+    end
   end
 
   root to: 'home#index'
 
   resources :questions
+  resources :accounts
   resources :categories
   resources :exams do
     collection do
