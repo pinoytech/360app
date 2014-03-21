@@ -35,8 +35,10 @@ class User < ActiveRecord::Base
   end
 
   def self.search(term)
-    str = "%#{term.downcase}%"
-    where('LOWER(first_name) LIKE ? OR LOWER(last_name) LIKE ? OR LOWER(email) LIKE ? AND LOWER(first_name) IS NOT NULL', str, str, str)
+    unless term.blank?
+      str = "%#{term.downcase}%"
+      where('LOWER(first_name) LIKE ? OR LOWER(last_name) LIKE ? OR LOWER(email) LIKE ? AND LOWER(first_name) IS NOT NULL', str, str, str)
+    end
   end
 
   def message_badges_size

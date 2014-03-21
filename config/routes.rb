@@ -17,7 +17,11 @@ Hackathon2014::Application.routes.draw do
   root to: 'home#index'
 
   resources :questions
-  resources :accounts
+  resources :accounts do
+    member do
+      get :assign_user
+    end
+  end
   resources :categories
   resources :exams do
     collection do
@@ -27,6 +31,7 @@ Hackathon2014::Application.routes.draw do
       get :question_list
     end
   end
+
   resources :seasons
   resources :messages do
     collection do
