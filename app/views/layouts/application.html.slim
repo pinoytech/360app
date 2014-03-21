@@ -9,7 +9,7 @@ html lang='en'
     = csrf_meta_tags
     = yield :head
 
-    - body_bg = nil
+    - body_bg = "background: url('/assets/crossword.png') repeat;"
     - if (params[:controller].eql?('home') && params[:action].eql?('index')) || (params[:controller].eql?('devise/registrations') && params[:action].eql?('create'))
       - body_bg = "background: url('https://d2ed0w4q03gsmw.cloudfront.net/e5f5141/images/home/profiles-collage.jpg') repeat;"
 
