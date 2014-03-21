@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
   def index
-    #@account = current_user.account
+    @account = current_user.account
     @users = @account.users
     respond_to do |format|
       format.html
@@ -34,7 +34,7 @@ class UsersController < ApplicationController
     @exams_user = ExamsUser.new(exams_user_params)
     respond_to do |format|
       if @exams_user.save
-        @account = current_user.account        
+        @account = current_user.account
         @users = @account.users
         format.html { redirect_to users_path, notice: 'Exam was successfully assigned.' }
         format.js
@@ -46,7 +46,7 @@ class UsersController < ApplicationController
   end
 
   private
-  
+
   def exams_user_params
     params.require(:exams_user).permit(:user_id, :exam_id, :ratee_id)
   end

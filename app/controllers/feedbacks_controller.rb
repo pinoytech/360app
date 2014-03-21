@@ -3,4 +3,9 @@ class FeedbacksController < ApplicationController
     @pending_feedback = current_user.exams_users.incomplete
     @provided_feedbacks = current_user.exams_users.complete
   end
+
+  def show
+
+  end
+
 end

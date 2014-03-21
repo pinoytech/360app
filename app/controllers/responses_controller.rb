@@ -6,12 +6,17 @@ class ResponsesController < ApplicationController
   end
 
   def create
-    params[:response][:answer].each_with_index do |answer, index|
-      @response = Response.create({"exams_user_id" => strong_params[:exams_user_id], "answer" => strong_params[:answer][index]})
+
+    for i in 0..20
+      if params[:response]["answer_#{i}".to_sym].present?
+        @response = Response.create({ "exams_user_id" => strong_params[:exams_user_id], "answer" => params[:response]["answer_#{i}".to_sym] })
+      end
     end
 
     respond_to do |format|
       if @response
+        @response.exams_user.completed = true
+        @response.exams_user.save
         format.html { redirect_to @response }
       else
         format.html {
@@ -24,6 +29,6 @@ class ResponsesController < ApplicationController
 
   private
   def strong_params
-    params.require(:response).permit(:exams_user_id, answer: [])
+    params.require(:response).permit(:exams_user_id)
   end
 end
