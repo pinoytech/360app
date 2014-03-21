@@ -21,42 +21,47 @@
                           | * #{msg}
 
                 h4
-                  = "Exam Name: #{@exams_user.exam.name}"
+                  = "Exam Name: #{@exams_user.exam.name} - #{@exams_user.user.full_name}"
+                - if @exams_user.exam.multiple_choice?
+                  hr
+                  = render 'static_multiple_choice'
                 hr
                 .row
                   .col-sm-12
                     .question Questions
                     .questions-container.row
                       .col-sm-12
-                        - @exams_user.exam.questions.each_with_index do |question, index|
-                          .form-group
-                            = "#{index + 1}. #{question.title}"
-                            - if question.kind == 'Multiple Choice' || question.kind == 'multiple choice'
-                              .answers-container.row
-                                .col-md-1
-                                  = f.radio_button "answer_#{index}".to_sym, 1
-                                  | &nbsp;
-                                  = f.label '1'
-                                .col-md-1
-                                  = f.radio_button "answer_#{index}".to_sym, 2
-                                  | &nbsp;
-                                  = f.label '2'
-                                .col-md-1
-                                  = f.radio_button "answer_#{index}".to_sym, 3
-                                  | &nbsp;
-                                  = f.label '3'
-                                .col-md-1
-                                  = f.radio_button "answer_#{index}".to_sym, 4
-                                  | &nbsp;
-                                  = f.label '4'
-                                .col-md-1
-                                  = f.radio_button "answer_#{index}".to_sym, 5
-                                  | &nbsp;
-                                  = f.label '5'
-                            - if question.kind == 'Simple' || question.kind == 'simple'
-                              .answers-container.row
-                                .col-sm-12
-                                  = f.text_area "answer_#{index}".to_sym, class: 'form-control'
+                        - @exams_user.exam.questions.group_by(&:category).each do |category, questions|
+                          h4 =category.name
+                          - questions.each_with_index do |question, index|
+                            .form-group
+                              = "#{index + 1}. #{question.title}"
+                              - if question.kind == 'Multiple Choice' || question.kind == 'multiple choice'
+                                .answers-container.row
+                                  .col-md-1
+                                    = f.radio_button :answer, 1, multiple: true
+                                    | &nbsp;
+                                    = f.label '1'
+                                  .col-md-1
+                                    = f.radio_button :answer, 2, multiple: true
+                                    | &nbsp;
+                                    = f.label '2'
+                                  .col-md-1
+                                    = f.radio_button :answer, 3, multiple: true
+                                    | &nbsp;
+                                    = f.label '3'
+                                  .col-md-1
+                                    = f.radio_button :answer, 4, multiple: true
+                                    | &nbsp;
+                                    = f.label '4'
+                                  .col-md-1
+                                    = f.radio_button :answer, 5, multiple: true
+                                    | &nbsp;
+                                    = f.label '5'
+                              - if question.kind == 'Simple' || question.kind == 'simple'
+                                .answers-container.row
+                                  .col-sm-12
+                                    = f.text_area :answer, multiple: true, class: 'form-control'
             .row
               hr
             .row
