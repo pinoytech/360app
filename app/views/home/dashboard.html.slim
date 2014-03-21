@@ -29,11 +29,6 @@
                     .col-sm-2
                       = link_to badge, class: 'thumbnail' do
                         = image_tag badge.image.url(:thumb), class: 'js-popover', 'data-placement' => 'top', 'data-content' => "You have been awarded the #{badge.name}"
-      .panel.panel-info
-        .panel-heading
-          h3.panel-title Notifications
-        .panel-body
-          | Feedback
 
 javascript:
   $(function(){

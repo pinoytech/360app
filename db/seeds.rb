@@ -97,6 +97,16 @@ designs.each do |design|
     )
 end
 
+#initialize message
+badge_id = Badge.first.id
+sender_id = User.first.id
+receiver_id = User.last.id
+Message.where(title: 'Hello World!',
+              body: 'Please take time to praise someone.',
+              badge_id: badge_id,
+              from_id: sender_id,
+              user_id: receiver_id).first_or_create
+
 #start Feedback Cycle
 Season.where(name: '360 Degree Feedback 2014', status: 'open').first_or_create
 
@@ -122,16 +132,5 @@ seed_yaml["exams"].each do |exam|
   e.questions << Question.all
   e.save!
 end
-
-#initialize message
-badge_id = Badge.first.id
-sender_id = User.first.id
-receiver_id = User.last.id
-Message.where(title: 'Hello World!',
-               body: 'Please take time to praise someone.',
-               badge_id: badge_id,
-               from_id: sender_id,
-               user_id: receiver_id).first_or_create
-
 
 

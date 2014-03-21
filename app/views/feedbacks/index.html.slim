@@ -24,7 +24,7 @@
           - if @pending_feedback.any?
             ul
               - @pending_feedback.each do |feedback|
-                li= link_to feedback.exam.name, '#'
+                li= link_to feedback.exam.name, new_response_path(exams_users_id: feedback.id)
           - else
             p You have no pending feedback.
 
