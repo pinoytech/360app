@@ -7,4 +7,5 @@ class Badge < ActiveRecord::Base
   validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
   has_many :badges_users
   has_many :users, through: :badges_users
+  has_many :messages
 end

@@ -16,4 +16,12 @@ class User < ActiveRecord::Base
     str = "%#{term}%"
     where('first_name LIKE ? OR last_name LIKE ? OR email LIKE ?', str, str, str)
   end
+
+  def message_badges_size
+    self.messages.count(:badge_id)
+  end
+
+  def message_badges
+    self.messages.joins(:badge)
+  end
 end
