@@ -1,0 +1,18 @@
+.container
+  .row
+    =render 'sidebar'
+    .col-xs-12.col-sm-9
+      = form_for @question, html: {role: 'form'} do |f|
+        .form-group
+          = f.label :category_id
+          = f.select :category_id, Category.all.collect {|p| [ p.name, p.id ] }, {}, class: 'form-control'
+        .form-group
+          = f.label :title
+          = f.text_field :title, placeholder: 'Title', class: 'form-control'
+        .form-group
+          = f.label :description
+          = f.text_area :description, rows: '4', placeholder: 'Description', class: 'form-control'
+        .form-group
+          = f.label :type
+          = f.select :type, options_for_select(['score', 'text']), {}, placeholder: 'Description', class: 'form-control'
+        = f.submit 'Create Question', class: 'btn btn-primary'

@@ -1,0 +1,18 @@
+.container
+  .row
+  .row
+    =render 'sidebar'
+    .col-xs-12.col-sm-9
+      .panel.panel-default
+        .panel-heading
+          h3.panel-title New Category
+        .panel-body  
+          = form_for @category, html: {role: 'form'} do |f|
+            .form-group
+              = f.label :name
+              = f.text_field :name, placeholder: 'Title', class: 'form-control'
+            .form-group
+              = f.label :description
+              = f.text_area :description, rows: '4', placeholder: 'Description', class: 'form-control'
+            .form-group
+              = f.submit 'Add', class: 'btn btn-primary'

@@ -1,2 +1,2 @@
-class ExamsQuestions < ActiveRecord::Base
+class ExamsQuestion < ActiveRecord::Base
 end

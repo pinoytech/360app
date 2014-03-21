@@ -1,0 +1,10 @@
+.container
+  .row
+    =render 'sidebar'
+    .col-xs-12.col-sm-9
+      .panel.panel-info
+        .panel-heading= @question.title
+        .panel-body
+          = @question.description
+          br
+          = link_to @question.category.name, @question.category, class: 'label label-primary'

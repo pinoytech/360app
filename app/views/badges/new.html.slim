@@ -1,0 +1,15 @@
+.container
+  .row
+    =render 'sidebar'
+    .col-xs-12.col-sm-9
+      = form_for @badge, html: {role: 'form'} do |f|
+        .form-group
+          = f.label :name
+          = f.text_field :name, placeholder: 'Name', class: 'form-control'
+        .form-group
+          = f.label :description
+          = f.text_area :description, rows: '4', placeholder: 'Description', class: 'form-control'
+        .form-group
+          = f.label :image
+          = f.file_field :image, class: 'form-control'
+        = f.submit 'Create Badge', class: 'btn btn-primary'
