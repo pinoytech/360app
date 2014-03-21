@@ -13,6 +13,14 @@ h3.panel-title small
   color: #f1f1f1;
 }
 
+.info {
+  margin-right: 4px;
+  display: inline;
+  &.blue {
+    color: #285e8e;
+  }
+}
+
 //
 #sign-up-form-container {
 	background: #fff;

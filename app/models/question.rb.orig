@@ -1,0 +1,12 @@
+class Question < ActiveRecord::Base
+  belongs_to :category
+<<<<<<< HEAD
+  has_many :exams_questions
+  has_many :exams, through: :exams_questions
+
+  self.inheritance_column = :fake_column
+=======
+  has_many :exams, through: :exams_questions
+  has_many :exams_questions
+>>>>>>> 0dc03279a8399faaa38a52bdcf123536ac058f67
+end
