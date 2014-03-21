@@ -1,18 +1,20 @@
 class UsersController < ApplicationController
+
   def index
-    @users = User.all
+    @account = current_user.account
+    @users = @account.users
     respond_to do |format|
       format.html
     end
   end
 
-<<<<<<< HEAD
   def show
     @user = User.find(params[:id])
     respond_to do |format|
       format.html
     end
-=======
+  end
+
   def assign_exam
     @user = User.find params[:id]
     @exams = Season.active_exams
@@ -24,16 +26,15 @@ class UsersController < ApplicationController
   end
 
   private
-  def strong_params
-    params.require(:user).permit(
-      {
-          exams_attributes: [
-              :exam_id
-          ],
-          ratees_attributes: [
-              :ratee_id
-          ]
-      })
->>>>>>> 4f454c96699a145cc5a434c7f5a7ba8ea9e901ac
-  end
+    def strong_params
+      params.require(:user).permit(
+        {
+            exams_attributes: [
+                :exam_id
+            ],
+            ratees_attributes: [
+                :ratee_id
+            ]
+        })
+    end
 end

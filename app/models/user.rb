@@ -17,6 +17,7 @@ class User < ActiveRecord::Base
   has_many :exams_users
   has_many :exams, through: :exams_users
   has_many :ratees, through: :exams_users, foreign_key: :ratee_id, source: :ratee, class_name: 'User'
+  belongs_to :account
 
   accepts_nested_attributes_for :ratees
   accepts_nested_attributes_for :exams
