@@ -18,6 +18,8 @@ Account.where(
 
 
 #initialize users
+
+#super admin
 User.create(first_name: 'Ayra',
            last_name: 'Panganiban',
            email: 'ayrap@sourcepad.com',
@@ -25,11 +27,24 @@ User.create(first_name: 'Ayra',
            account_id: Account.first.id,
            super_admin: 1)
 
-User.create(first_name: 'Joe',
-           last_name: 'Smith',
-           email: 'admin@sourcepad.com',
+#admin
+User.create(first_name: 'Migz',
+           last_name: 'Suelto',
+           email: 'michaels@sourcepad.com',
            password: '12345678',
            admin: Account.first.id)
+
+#employee
+User.create(first_name: 'Teejay',
+            last_name: 'Obazee',
+            email: 'tjo@sourcepad.com',
+            password: '12345678')
+
+#employee
+User.create(first_name: 'Gino',
+            last_name: 'Cortez',
+            email: 'ginoc@sourcepad.com',
+            password: '12345678')
 
 #initialize badges
 designs = [
