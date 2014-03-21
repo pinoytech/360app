@@ -1,0 +1,66 @@
+#examModal.modal.fade
+  .modal-dialog
+    .modal-content
+      .modal-header
+        button.close aria-hidden="true" data-dismiss="modal" type="button"  &times;
+        h4.modal-title Assign Exam
+      = form_for @exams_user, url: save_exam_user_path, html: {role: 'form', method: 'post'} do |f|
+        .modal-body
+          .form-group
+            strong Choose your Ratee
+            #user_select.select2-container.select2-container-active style=('width: 560px;margin-bottom:15px;')
+              a.select2-choice href="javascript:void(0)" onclick=('return false;') tabindex="-1" required="true"
+                span.select2-chosen &nbsp;
+                abbr.select2-search-choice-close
+                span.select2-arrow
+                  b
+              input#user_autogen.select2-focusser.select2-offscreen tabindex="0" type="text"
+              =f.hidden_field :ratee_id
+              =f.hidden_field :user_id, value: @user.id
+          .form-group
+            strong Choose Exam
+            = f.select :exam_id, options_from_collection_for_select(@exams, 'id', 'name'), {}, class: 'form-control'
+        .modal-footer
+          button.btn.btn-default data-dismiss="modal" type="button"  Close
+          =f.submit 'Assign', class: 'btn btn-primary btn-message'
+
+javascript:
+  $(function(){
+    popOver.tooltip();
+     $("#user_select").select2({
+         placeholder: "Search a user...",
+         minimumInputLength: 1,
+         formatInputTooShort: function () {
+           return "Search by name or email...";
+         },
+         ajax: {
+             url: "/messages/search_users",
+             dataType: 'json',
+             data: function (term, page) {
+                 return {
+                     term: term
+                 };
+             },
+             results: function (data, page) {
+                return {results: data.users};
+             }
+         },
+         formatResult: userFormatResult,
+         formatSelection: userFormatSelection,
+         dropdownCssClass: "bigdrop",
+         escapeMarkup: function (m) { return m; },
+     });
+     function userFormatResult(user) {
+         var markup = "<table class='user-result'><tr>";
+         markup += "<td class='user-info'><div class='user-name'>" + user.first_name +' '+ user.last_name + "</div>";
+         markup += "<td class='hidden'><div class='user-id'>" + user.id +"</div>";
+         markup += "</td></tr></table>"
+         return markup;
+     }
+
+     function userFormatSelection(user) {
+         $('#exams_user_ratee_id').val(user.id);
+         return (user.first_name + ' ' + user.last_name);
+     }
+  })
+

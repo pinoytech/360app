@@ -1,7 +1,12 @@
 class Exam < ActiveRecord::Base
   belongs_to :season
+<<<<<<< HEAD
+  has_many :exams_questions
+  has_many :questions, through: :exams_questions
+=======
   has_many :questions, through: :exams_questions
   has_many :exams_questions
+>>>>>>> 0dc03279a8399faaa38a52bdcf123536ac058f67
   has_many :users, through: :exams_users
   has_many :exams_users
 

@@ -1,5 +1,6 @@
 # Use this hook to configure devise mailer, warden hooks and so forth.
 # Many of these configuration options can be set straight in your model.
+GPLUS = YAML::load(File.open(File.expand_path("config/gplus.yml")))[Rails.env]
 Devise.setup do |config|
   # The secret key used by Devise. Devise uses this key to generate
   # random tokens. Changing this key will render invalid all existing
@@ -253,4 +254,11 @@ Devise.setup do |config|
   # When using omniauth, Devise cannot automatically set Omniauth path,
   # so you need to do it manually. For the users scope, it would be:
   # config.omniauth_path_prefix = '/my_engine/users/auth'
+  config.omniauth :google_oauth2, GPLUS['key'], GPLUS['secret'], {
+    :name => "google_oauth2",
+    :scope => "userinfo.email, userinfo.profile, plus.me, http://gdata.youtube.com",
+    :prompt => "select_account",
+    :image_aspect_ratio => "square",
+    :image_size => 50
+  }
 end

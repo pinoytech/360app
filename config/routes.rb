@@ -1,6 +1,16 @@
 Hackathon2014::Application.routes.draw do
-  devise_for :users
-  resources :users
+
+  devise_for :users, :controllers => {
+    :omniauth_callbacks => "omniauth_callbacks" 
+  }
+
+  resources :users do
+    member do
+      post :save_exam
+      get  :assign_exam
+    end
+  end
+
   root to: 'home#index'
 
   resources :questions
@@ -22,6 +32,7 @@ Hackathon2014::Application.routes.draw do
 
   resources :feedbacks
   resources :badges
+  resources :reports
   match 'dashboard' => 'home#dashboard', via: :get
   match '/admin/dashboard' => 'admin#index', via: :get
 
