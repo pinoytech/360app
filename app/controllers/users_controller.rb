@@ -15,6 +15,13 @@ class UsersController < ApplicationController
     end
   end
 
+  def admins
+    @users = User.admin
+    respond_to do |format|
+      format.html
+    end
+  end
+
   def assign_exam
     @user = User.find params[:id]
     @exams = Season.active_exams

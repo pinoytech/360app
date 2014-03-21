@@ -9,6 +9,9 @@ Hackathon2014::Application.routes.draw do
       post :save_exam
       get  :assign_exam
     end
+    collection do
+      get :admins
+    end
   end
 
   root to: 'home#index'
