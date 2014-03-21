@@ -8,14 +8,14 @@
         .panel-body
           .col-xs-8
             h4 Hello #{current_user.first_name}!
-          .col-sm-4
-            .thumbnail
-              = image_tag current_user.avatar.url(:small)
-          .col-xs-12
             ul.list-unstyled
               li Name: #{current_user.full_name}
               li Email: #{current_user.email}
               li Position: #{current_user.job_title}
+          .col-sm-4
+            .thumbnail
+              = image_tag current_user.avatar.url(:thumb)
+          .col-xs-12
       .panel.panel-default
         .panel-heading
           h3.panel-title Badges

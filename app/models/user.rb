@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
       :small => "200x200>",
       :thumb => "100x100>"
     },
-    :default_url => "/avatar/:style/avatar.jpg"
+    :default_url => "/avatar/:style/missing.jpg"
   validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
 
   has_many :messages
