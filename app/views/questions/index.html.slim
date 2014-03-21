@@ -1,9 +1,15 @@
 .container
   .row
     =render 'sidebar'
-    .col-xs-12.col-sm-9
-      .list-group
-        - @questions.each do |question|
-          = link_to question, class: 'list-group-item' do
-            h4.list-group-item-heading= question.title
-            p.list-group-item-text= question.description
+    .col-sm-9
+      .panel.panel-default
+        .panel-heading
+          h3.panel-title Questions
+        .panel-body
+          p= link_to 'Add a Question', new_question_path, class: 'btn btn-primary'
+          .list-group
+            - if @questions.any?
+              - @questions.each do |question|
+                = link_to question, class: 'list-group-item' do
+                  h4.list-group-item-heading= question.title
+                  p.list-group-item-text= question.description
