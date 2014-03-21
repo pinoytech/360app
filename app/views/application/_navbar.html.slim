@@ -8,8 +8,9 @@
         span.icon-bar
       = link_to '360 Feedback', root_path, class: 'navbar-brand'
     .collapse.navbar-collapse
-      ul.nav.navbar-nav.navbar-right
-        li
-          = link_to destroy_user_session_path, method: :delete do
-            | Logout
-      p.navbar-text.navbar-right="Welcome #{current_user.full_name}!"
+      - if current_user
+        ul.nav.navbar-nav.navbar-right
+          li
+            = link_to destroy_user_session_path, method: :delete do
+              | Logout
+        p.navbar-text.navbar-right="Welcome #{current_user.full_name}!"
