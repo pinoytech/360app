@@ -10,8 +10,8 @@
           h3.panel-title Messages
         .panel-body
           table.table.table-responsive.table-striped.table-hover.table-condensed
-            - if @public_messages.any?
-              - @public_messages.each do |message|
+            - if @messages.any?
+              - @messages.each do |message|
                 tr
                   td
                     strong =message.title
@@ -24,20 +24,5 @@
                       .info=privacy_text(message)
                       .info=" ago".prepend(time_ago_in_words(message.created_at))
                   td=image_tag message.badge.image.url(:thumb) unless message.badge.nil?
-              - if @private_messages.any?
-                - @private_messages.each do |message|
-                  tr
-                    td
-                      strong =message.title
-                      p =message.body
-                      em.span.message_links
-                        .info.blue=message.sender.full_name
-                        .info
-                          i class="fa fa-arrow-circle-right"
-                        .info.blue=message.receiver.full_name
-                        .info=privacy_text(message)
-                        .info=" ago".prepend(time_ago_in_words(message.created_at))
-                    td
-                      =image_tag message.badge.image.url(:thumb) unless message.badge.nil?
 = render 'new_modal'
 
