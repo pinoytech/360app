@@ -6,13 +6,13 @@ class UsersController < ApplicationController
     end
   end
 
-<<<<<<< HEAD
   def show
     @user = User.find(params[:id])
     respond_to do |format|
       format.html
     end
-=======
+  end
+
   def assign_exam
     @user = User.find params[:id]
     @exams = Season.active_exams
@@ -34,6 +34,5 @@ class UsersController < ApplicationController
               :ratee_id
           ]
       })
->>>>>>> 4f454c96699a145cc5a434c7f5a7ba8ea9e901ac
   end
 end
