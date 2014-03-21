@@ -13,6 +13,9 @@ Hackathon2014::Application.routes.draw do
   resources :exams do
     collection do
       get :category_questions
+      get :select_questions
+      get :remove_questions
+      get :question_list 
     end
   end
   resources :seasons

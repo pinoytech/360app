@@ -15,6 +15,10 @@
                       h3.panel-title Categories
                     .panel-body 
                       = select_tag 'category_selection', options_from_collection_for_select(Category.all, :id, :name), :prompt => 'All Categories', class: 'form-control'
+                      br
+                      = f.label Season.open.first.name if Season.open.first.present?
+
+                      = f.hidden_field 'season_id', value: Season.open.first.id if Season.open.first.present?
 
                 .col-sm-6
                   .panel.panel-default
@@ -35,12 +39,14 @@
                   .question-list
                     = render 'questions'
                 .col-sm-1
+                  .hidden
+                    = hidden_field_tag "selected_questions", ""
                   .question-navigations
                     li.right-button.fa.fa-arrow-circle-right
                     .clearfix
                     li.left-button.fa.fa-arrow-circle-left
                 .col-sm-5  
-                  .active-question-list
+                  .selected-question-list
 
             .row
               .col-sm-12.text-right
