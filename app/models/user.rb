@@ -7,6 +7,9 @@ class User < ActiveRecord::Base
   has_many :messages
   has_many :badges_users
   has_many :badges, through: :badges_users
+  has_many :exams_users
+  has_many :exams, through: :exams_users
+  has_many :ratees, through: :exams_users, foreign_key: :ratee_id, source: :ratee, class_name: 'User'
 
   def full_name
     [first_name, last_name].select{|x| x.present?}.join(' ')

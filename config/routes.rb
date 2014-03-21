@@ -10,7 +10,6 @@ Hackathon2014::Application.routes.draw do
     end
   end
   resources :seasons
-
   resources :messages do
     collection do
       get :search_users
