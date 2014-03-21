@@ -14,3 +14,6 @@
             = link_to destroy_user_session_path, method: :delete do
               | Logout
         p.navbar-text.navbar-right="Welcome #{current_user.full_name}!"
+      - else
+        ul.nav.navbar-nav.navbar-right
+          li=link_to 'Log in', new_user_session_path
