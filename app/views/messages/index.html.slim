@@ -15,9 +15,9 @@
                 strong =message.title
                 p =message.body
                 em.ul.list-unstyled.list-inline
-                  li=message.from.full_name
+                  li=message.sender.full_name
                   li >>
-                  li=message.user.full_name
+                  li=message.receiver.full_name
                   li=privacy_text(message)
                   li=time_ago_in_words(message.created_at)
             - if @private_messages.any?
@@ -26,9 +26,9 @@
                   strong =message.title
                   p =message.body
                   em.ul.list-unstyled.list-inline
-                    li=message.from.full_name
+                    li=message.sender.full_name
                     li >>
-                    li=message.user.full_name
+                    li=message.receiver.full_name
                     li=privacy_text(message)
                     li=time_ago_in_words(message.created_at)
 = render 'new_modal'

@@ -9,6 +9,7 @@ gem 'mysql2', '0.3.11'
 gem 'slim'
 gem 'devise'
 gem "paperclip", "~> 4.1"
+gem 'omniauth-google-oauth2'
 
 
 group :doc do

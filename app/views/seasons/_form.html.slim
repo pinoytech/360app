@@ -1,0 +1,15 @@
+= form_for @season, html: {role: 'form'} do |f|
+  .form-group
+    = f.label :name
+    = f.text_field :name, placeholder: 'Title', class: 'form-control'
+  .form-group
+    .input-group
+      span.input-group-addon
+        = f.check_box :status, {}, 'open', 'closed'
+      =f.label 'Click this to activate the season.', class: 'form-control'
+  .form-group
+    ul.list-unstyled.list-inline
+      li= f.submit 'Update', class: 'btn btn-primary' if params[:action].eql?('edit')
+      li= f.submit 'Add', class: 'btn btn-primary' if params[:action].eql?('new')
+      li= link_to 'Back', seasons_path, class: 'btn btn-default'
+
