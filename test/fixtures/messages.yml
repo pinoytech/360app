@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 1
+  title: MyString
+  body: 
+  badge_id: 1
+  share: false
+  from_id: 1
+
+two:
+  user_id: 1
+  title: MyString
+  body: 
+  badge_id: 1
+  share: false
+  from_id: 1
