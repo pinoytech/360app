@@ -104,3 +104,32 @@ h3.panel-title small
 		}
 	}
 }
+
+#response-form-container {
+	#error_explanation {
+	color: #b94a48;
+	border: 1px solid #eed3d7;
+	margin-bottom: 20px;
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+		.alert {
+			border: none;
+		}
+		ul {
+			list-style: none;
+			margin: 0 0 18px 0;
+		}
+	}
+	.answers-container {
+		margin-top: 10px;
+		margin-left: 5px;
+	}
+	.question {
+		font-weight: bold;
+		margin-bottom: 10px;
+	}
+	.questions-container {
+		margin-left: 5px;
+	}
+}

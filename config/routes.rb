@@ -47,11 +47,6 @@ Hackathon2014::Application.routes.draw do
   match 'dashboard' => 'home#dashboard', via: :get
   match '/admin/dashboard' => 'admin#index', via: :get
 
-  resources :exams_users do
-    collection do
-      get :responses
-      post :create_response
-    end
-  end
+  resources :responses
 
 end
