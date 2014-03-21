@@ -9,11 +9,15 @@ html lang='en'
     = csrf_meta_tags
     = yield :head
 
-	body
-      = render 'navbar'
+    - body_bg = nil
+    - if (params[:controller].eql?('home') && params[:action].eql?('index')) || (params[:controller].eql?('devise/registrations') && params[:action].eql?('create'))
+      - body_bg = "background: url('https://d2ed0w4q03gsmw.cloudfront.net/e5f5141/images/home/profiles-collage.jpg') repeat;"
 
-      #error= render 'flash', flash: flash
+	body style="#{body_bg}"
+    = render 'navbar'
 
-      = yield
+    #error= render 'flash', flash: flash
 
-      = render 'footer'
+    = yield
+
+    = render 'footer'
