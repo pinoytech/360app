@@ -16,4 +16,4 @@
         p.navbar-text.navbar-right=welcome(current_user)
       - else
         ul.nav.navbar-nav.navbar-right
-          li=link_to 'Log in', new_user_session_path
+          li=link_to '<i class="fa fa-sign-in"></i><span> Log in</span>'.html_safe, new_user_session_path
