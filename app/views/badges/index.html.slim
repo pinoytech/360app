@@ -7,11 +7,12 @@
           .panel-heading
             h3.panel-title Badges
           .panel-body
-            .row
-            - @badges.each do |badge|
-                .col-sm-4
-                  .thumbnail
-                    = image_tag badge.image.url(:small)
-                    .caption
-                      h4= badge.name
-                      p= badge.description
+            - @badges.in_groups_of(3, false) do |badge_group|
+              .row
+                - badge_group.each do |badge|
+                  .col-sm-4
+                    .thumbnail
+                      = image_tag badge.image.url(:small)
+                      .caption
+                        h4= badge.name
+                        p= badge.description
