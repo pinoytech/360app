@@ -16,7 +16,12 @@
         .panel-heading
           h3.panel-title Feedback for You
         .panel-body
-          p Feedback is still being collected.
+          -if @received_feedbacks.any?
+            ul
+              - @received_feedbacks.each do |fb|
+                li=link_to fb.exam.name, feedback_path(fb)
+          - else
+            p Feedback is still being collected.
       .panel.panel-info
         .panel-heading
           h3.panel-title Pending Feedback
