@@ -77,16 +77,12 @@ class ExamsController < ApplicationController
     else
       @questions = Question.all
     end
-    respond_to do |format|
-      format.html
-      format.json
-    end    
   end
 
   def select_questions
     @question_ids = params[:question_ids].split(',')
-    
-    if params[:catregory_id]
+
+    if !params[:category_id].blank?
       @category = Category.find params[:category_id]
       @questions = @category.questions
     else
@@ -99,8 +95,7 @@ class ExamsController < ApplicationController
 
   def remove_questions
     @question_ids = params[:question_ids].split(',')
-    
-    if params[:catregory_id]
+    if !params[:category_id].blank?
       @category = Category.find params[:category_id]
       @questions = @category.questions
     else

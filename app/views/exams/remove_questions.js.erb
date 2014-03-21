@@ -2,7 +2,7 @@ $(".question-list").html("<%= j(render partial: 'exams/questions.html.slim')%>")
 $(".selected-question-list").html("<%= j(render partial: 'exams/selected_questions.html.slim')%>")
 
 $('.question-list .question').on('click', function() {
-  var added, q, ques_id, questions, selected_questions;
+  var added, list_group, q, ques_id, questions, selected_questions;
   selected_questions = $("#selected_questions").val();
   if (selected_questions.length === 0) {
     questions = [];
@@ -20,11 +20,17 @@ $('.question-list .question').on('click', function() {
     questions.push(ques_id.toString());
   }
   q = questions.join(',');
-  return $('#selected_questions').val(q);
+  $('#selected_questions').val(q);
+  list_group = $(this).children('.list-group-item');
+  if (list_group.hasClass('selected')) {
+    return list_group.removeClass('selected');
+  } else {
+    return list_group.addClass('selected');
+  }
 });
 
 $('.selected-question-list .question').on('click', function() {
-  var added, q, ques_id, questions, selected_questions;
+  var added, list_group, q, ques_id, questions, selected_questions;
   selected_questions = $("#selected_questions").val();
   if (selected_questions.length === 0) {
     questions = [];
@@ -38,11 +44,15 @@ $('.selected-question-list .question').on('click', function() {
       return added = true;
     }
   });
-
   if (added === true) {
     questions.splice(questions.indexOf(ques_id.toString()), 1);
   }
   q = questions.join(',');
-  return $('#selected_questions').val(q);
+  $('#selected_questions').val(q);
+  list_group = $(this).children('.list-group-item');
+  if (list_group.hasClass('selected')) {
+    return list_group.removeClass('selected');
+  } else {
+    return list_group.addClass('selected');
+  }
 });
-
