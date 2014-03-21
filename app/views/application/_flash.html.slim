@@ -1,0 +1,7 @@
+- flash.each do |name, msg|
+  .container
+    .alert class='alert-#{name == :notice ? 'success' : 'danger'}'
+      button.close aria-hidden="true" data-dismiss="alert" type="button" &times;
+      p= msg.html_safe
+
+- flash.discard
