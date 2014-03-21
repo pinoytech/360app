@@ -12,3 +12,25 @@ h3.panel-title small
 {
   color: #f1f1f1;
 }
+
+//
+#sign-up-form-container {
+	width: 380px;
+
+	#error_explanation {
+		background: #f2dede;
+		padding: 10px;
+		margin-bottom: 10px;
+		border-radius: 5px;
+		-moz-border-radius: 5px;
+		-webkit-border-radius: 5px;
+		h2 {
+			font-size: 16px;
+			margin: 0 0 5px 0;
+			padding: 0;
+		}
+		ul {
+			margin: 0;
+		}
+	}
+}

@@ -10,7 +10,8 @@ html lang='en'
     = yield :head
 
 	body
-      =render 'navbar'
+      = render 'navbar'
+
       #error= render 'flash', flash: flash
 
       = yield

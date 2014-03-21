@@ -46,13 +46,13 @@ designs = [
       url: "http://i.imgur.com/J2FpJw6.png",
       name: 'Thumbs Up Badge',
       description: 'For people who come up with innovative solutions and insights'
-    },
+    }
 ]
 
 designs.each do |design|
-    Badge.create(
+    Badge.where(
       name: design[:name],
       description: design[:description],
       image: open(design[:url])
-    )
+    ).first_or_create
 end
